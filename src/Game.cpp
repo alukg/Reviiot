@@ -28,7 +28,7 @@ Game::Game(char *configurationFile) {
                     while (line.at(0) != ' ') {
                         string delimiter = " ";
                         string playerName = line.substr(0, line.find(delimiter));
-                        int playerStrategy = stoi(line.substr(line.find(delimiter) + 1, line.find(delimiter) + 2));
+                        int playerStrategy = stoi(line.substr(line.find(delimiter) + 1, 1));
                         //cout >> playerName >> endl;
                         //cout >> playerStrategy >> endl;
                         getline(f, line);
@@ -45,7 +45,7 @@ void Game::insertCardsToDeck(Deck &deck, int &highestNumCard, string line) {
     int iterator = 0;
     while (abs(length - iterator) > 1) {
         if (line.at(iterator) != ' ') {
-            deck.addCard(line.substr(iterator, iterator+2));
+            deck.addCard(line.substr(iterator, 2));
             iterator = iterator + 2;
         }
         iterator++;
