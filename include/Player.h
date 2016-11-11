@@ -3,15 +3,18 @@
 
 #include <iostream>
 
-#include <Hand.h>
+#include "Hand.h"
 
 using namespace std;
 
 class Player : public Hand {
 private:
 	const string name;
+	const int position;
 public:
-	string getName();   //Returns the name of the player
+	string getName(){
+
+	}
 };
 
 class PlayerType1 : public Player {  //For strategy 1
