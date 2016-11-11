@@ -58,10 +58,6 @@ public:
     */
 
 private:
-
-    int position;
-    string name;
-
     /*
     friend ostream& operator<< (ostream& os, const Player& foo)
     {

@@ -12,9 +12,7 @@ private:
 	const string name;
 	const int position;
 public:
-	string getName(){
-
-	}
+	string getName();
 };
 
 class PlayerType1 : public Player {  //For strategy 1
