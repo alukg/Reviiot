@@ -13,6 +13,9 @@ class Game {
 private:
 	vector<Player *> players;  //The list of the players
 	Deck deck;                 //The deck of the game
+	bool verbalOn;
+
+	void insertCardsToDeck(Deck &deck, int &highestNumCard, string line);
 public:
 	Game(char* configurationFile);
 	void init();

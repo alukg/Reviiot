@@ -5,6 +5,6 @@
 
 using namespace std;
 
-/** Default constructor */
-Player::Player(int newPosition, const string &newName) :
+/* Default constructor */
+Player::Player(int newPosition, string &newName) :
         position(newPosition), name(newName) {}
