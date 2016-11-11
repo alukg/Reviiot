@@ -2,6 +2,7 @@
 #define GAME_H_
 
 #include <iostream>
+#include <vector>
 
 #include "Player.h"
 #include "Deck.h"

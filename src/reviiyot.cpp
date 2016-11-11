@@ -6,9 +6,6 @@ using namespace std;
 
 int main(int argc, char **argv) {
 
-	Player *guy = new Player(1,"guy");
-
-	/*
 	char* configurationFile = argv[1];
 
 	Game game = Game(configurationFile);
@@ -25,8 +22,6 @@ int main(int argc, char **argv) {
 	cout<<"----------"<<endl;
 	cout<<"Final State:"<<endl;
 	game.printState();
-
-	*/
 
 	return 0;
 }
