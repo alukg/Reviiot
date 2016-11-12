@@ -4,8 +4,8 @@
 #include <iostream>
 #include <vector>
 
-#include "Player.h"
 #include "Deck.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -15,7 +15,9 @@ private:
 	Deck deck;                 //The deck of the game
 	bool verbalOn;
 
-	void insertCardsToDeck(Deck &deck, int &highestNumCard, string line);
+	void insertCardsToDeck(Deck &deck, string line);
+	void addPlayer(string playerName, int playerStrategy, int playerCounter, Game &game);
+	void giveCards(Player player);
 public:
 	Game(char* configurationFile);
 	void init();
