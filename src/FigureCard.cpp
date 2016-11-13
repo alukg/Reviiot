@@ -14,6 +14,23 @@ FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1) {
 };
 
 string FigureCard::toString() {
-    string c = ((&this->shape).)[0];
-    return c;
+
+    std:string ss = std::string() + this->getFigure() + this->getShape();
+    return ss;
 };
+
+char FigureCard::getFigure() {
+    switch (this->figure) {
+        case Jack:
+            return 'J';
+        case Queen:
+            return 'Q';
+        case King:
+            return 'K';
+        case Ace:
+            return 'A';
+    }
+    return 0;
+};
+
+
