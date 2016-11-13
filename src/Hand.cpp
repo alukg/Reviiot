@@ -8,7 +8,7 @@ void Hand::sortCards() {
     for (int i = 0; i < cards.size(); i++) {
         j = i;
 
-        while (j > 0 && comperator(cards.at(j), cards.at(j - 1)) < 1) {
+        while (j > 0 && compare(*cards.at(j), *cards.at(j - 1)) < 1) {
             temp = cards.at(j);
             cards.at(j) = cards.at(j - 1);
             cards.at(j - 1) = temp;
@@ -17,7 +17,7 @@ void Hand::sortCards() {
     }
 }
 
-int Hand::comperator(Card &left, Card &right) {
+int Hand::compare(Card &left, Card &right) {
 
 }
 

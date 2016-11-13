@@ -27,6 +27,7 @@ int main(int argc, char **argv) {
                 "Charlie 3";
 
     Game game = Game(configurationFile);
+	game.init();
 
 	Card *c1 = new NumericCard(5,Heart);
 	Card *c2 = new FigureCard(Jack,Club);

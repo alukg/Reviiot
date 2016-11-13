@@ -24,7 +24,7 @@ Game::Game(char *configurationFile) {
                         string delimiter = " ";
                         string playerName = line.substr(0, line.find(delimiter));
                         int playerStrategy = stoi(line.substr(line.find(delimiter) + 1, 1));
-                        addPlayer(playerName, playerStrategy, playerCounter, *this);
+                        addPlayer(playerName, playerStrategy, playerCounter);
                         playerCounter++;
                     }
                 } while (getline(f, line));
@@ -50,7 +50,7 @@ void Game::insertCardsToDeck(Deck &deck, string deckCards) {
 }
 
 //need to check how to insert the players, in the order we get them? or by astrategy?
-void Game::addPlayer(string playerName, int playerStrategy, int position, Game &game) {
+void Game::addPlayer(string playerName, int playerStrategy, int position) {
     switch (playerStrategy) {
         case 1:
             players.push_back(new PlayerType1(position, playerName));
@@ -73,10 +73,10 @@ void Game::init() {
     }
 }
 
-void Game::giveCards(Player player) {
+void Game::giveCards(Player &player) {
     for (int i = 1; i <= 7; i++) {
-        //player.addCard(deck.fetchCard());
+        player.addCard(deck.fetchCard());
     }
-    //player.sortCards();
+    player.sortCards();
 }
 
