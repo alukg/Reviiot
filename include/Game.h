@@ -16,8 +16,8 @@ private:
 	bool verbalOn;
 
 	void insertCardsToDeck(Deck &deck, string line);
-	void addPlayer(string playerName, int playerStrategy, int playerCounter, Game &game);
-	void giveCards(Player player);
+	void addPlayer(string playerName, int playerStrategy, int playerCounter);
+	void giveCards(Player &player);
 public:
 	Game(char* configurationFile);
 	void init();

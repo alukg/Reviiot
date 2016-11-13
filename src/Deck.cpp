@@ -47,10 +47,10 @@ void Deck::addCard(string cardName) {
     Card *card;
 
     if (isFigure){
-        //card = new FigureCard(shape,figure);
+        card = new FigureCard(figure,shape);
     }
     else{
-        //card = new NumericCard(shape,numValue);
+        card = new NumericCard(numValue,shape);
     }
 
     Q.push(card);
