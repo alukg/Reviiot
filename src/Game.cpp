@@ -79,4 +79,3 @@ void Game::giveCards(Player &player) {
     }
     player.sortCards();
 }
-
