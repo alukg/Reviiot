@@ -11,7 +11,7 @@ using namespace std;
 class Hand {
 private:
 	void sortCards();
-	int Hand::comperator(Card &left, Card &right);
+	int Hand::compare(Card &left, Card &right);
 	vector<Card *> cards;  //The list of the players
 
 public:

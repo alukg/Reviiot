@@ -53,16 +53,16 @@ void Game::insertCardsToDeck(Deck &deck, string deckCards) {
 void Game::addPlayer(string playerName, int playerStrategy, int position, Game &game) {
     switch (playerStrategy) {
         case 1:
-            players.push_back(new PlayerType1(position, playerName));
+            players.push_back(PlayerType1(position, playerName));
             break;
         case 2:
-            players.push_back(new PlayerType2(position, playerName));
+            players.push_back(PlayerType2(position, playerName));
             break;
         case 3:
-            players.push_back(new PlayerType3(position, playerName));
+            players.push_back(PlayerType3(position, playerName));
             break;
         case 4:
-            players.push_back(new PlayerType4(position, playerName));
+            players.push_back(PlayerType4(position, playerName));
             break;
     }
 }
@@ -75,8 +75,8 @@ void Game::init() {
 
 void Game::giveCards(Player player) {
     for (int i = 1; i <= 7; i++) {
-        //player.addCard(deck.fetchCard());
+        player.addCard(deck.fetchCard());
     }
-    //player.sortCards();
+    player.sortCards();
 }
 
