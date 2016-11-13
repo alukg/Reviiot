@@ -22,6 +22,7 @@ enum Figure {
 class Card {
 protected:
     Shape shape;
+    char getShape();
 public:
     Card(Shape shape1);
 
@@ -33,9 +34,11 @@ public:
 class FigureCard : public Card {
 private:
     Figure figure;
+    char getFigure();
 public:
     FigureCard(Figure figure1, Shape shape1);
     virtual string toString() override;
+
 };
 
 class NumericCard : public Card {

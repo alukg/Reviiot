@@ -4,16 +4,15 @@
 
 #include "../include/Card.h"
 #include <iostream>
-#include <sstream>
+#include <string>
 using namespace std;
-//Constructor
 
+//Constructor
 NumericCard::NumericCard(int num, Shape shape) : Card(shape), number(num){
 
 };
 
 string NumericCard::toString() {
-  std::stringstream ss;
-    ss << this->number << this->shape;
-  return ss.str();
+    std::string s = to_string(this->number);
+  return s + this->getShape();
 };
