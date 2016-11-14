@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 //	Game game = Game(configurationFile);
 
     //string configurationFile(argv[1]);
-/*
+
     char *configurationFile = (char *) "#Verbal ON\n"
                 "1\n"
                 "\n"
@@ -28,16 +28,7 @@ int main(int argc, char **argv) {
 
     Game game = Game(configurationFile);
 	game.init();
-*/
-    Hand *hand = new Hand();
-    Deck *d = new Deck();
-    d->addCard("2S");
-    d->addCard("KH");
-    d->addCard("AD");
 
-    cout << hand->getNumberOfCards() << endl;
-    string s = hand->toString();
-    cout << s<< endl;
 
     return 0;
 }

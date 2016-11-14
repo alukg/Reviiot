@@ -10,9 +10,10 @@ using namespace std;
 
 class Deck {
 private:
-	deque<Card *> Q;
+	deque<Card *> *Q;
 
 public:
+	Deck();
 	void addCard(string cardName);
 	Card* fetchCard();   //Returns the top card of the deck and remove it from the deck
 	int getNumberOfCards(); // Get the number of cards in the deck

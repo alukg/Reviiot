@@ -4,6 +4,10 @@
 
 using namespace std;
 
+Deck::Deck() {
+    this->Q = new deque<Card *>;
+}
+
 void Deck::addCard(string cardName) {
     Shape shape;
     bool isFigure = true;
@@ -52,23 +56,23 @@ void Deck::addCard(string cardName) {
         card = new NumericCard(numValue,shape);
     }
 
-    Q.push_back(card);
+    Q->push_back(card);
 };
 
 Card* Deck::fetchCard() {
-    Card *c = this->Q.front();
-    this->Q.pop_front();
+    Card *c = this->Q->front();
+    this->Q->pop_front();
     return c;
 };
 
 int Deck::getNumberOfCards() {
-    return this->Q.size();
+    return this->Q->size();
 };
 
 string Deck::toString() {
     //to be deleted
     string s="";
-    for (deque<Card *>::iterator it=Q.begin(); it != Q.end(); ++it){
+    for (deque<Card *>::iterator it=Q->begin(); it != Q->end(); ++it){
         Card *tmp = *it;
         s= s + tmp->toString() + ' ';
     }
