@@ -29,13 +29,13 @@ int main(int argc, char **argv) {
     Game game = Game(configurationFile);
 	game.init();
 */
-	Deck *deck = new Deck();
-    deck->addCard("2C");
-    deck->addCard("10H");
-    deck->addCard("JS");
-    std::cout << deck->getNumberOfCards() << std::endl;
-    std::cout << deck->toString() << std::endl;
-    deck->fetchCard();
-    std::cout << deck->getNumberOfCards() << std::endl;
+    Hand *hand = new Hand();
+    Deck *d = new Deck();
+    d->addCard("2S");
+    d->addCard("KH");
+    d->addCard("AD");
+    cout << hand->getNumberOfCards() << endl;
+    cout << hand->toString() << endl;
+
 }
 

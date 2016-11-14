@@ -18,22 +18,18 @@ static int Hand::figureToInt(char fig) {
             return 0;
     }
 }
-/*
+
 void Hand::addCard(Card *card) {
     bool found = false;
-    for (vector<Card *>::iterator it = this->cards.begin(); it < this->cards.end() && !found; it++) {
+    for (list<Card *>::iterator it = this->cards.begin(); it != this->cards.end() && !found; it++) {
         Card *tmp = *it;
         if (compare(*card,*tmp )) {
-
+            cards.insert(it,card);
         }
     }
 }
-*/
 
 
-void Hand::addCard(Card *card) {
-    if(this->cards.)
-}
 bool Hand::compare( Card &left1, Card &right1) {
 
     int left =figureToInt(left1.toString()[0]);
@@ -60,8 +56,8 @@ int Hand::getNumberOfCards() {
 
 string Hand::toString() {
     string ans = "";
-    for (int i = 0; i < cards.size(); i++) {
-        if (i == cards.size() - 1)
+    for (std::list<int>::iterator *it = cards.begin(); *it != cards.end(); *it++) {
+        if (it == cards.size() - 1)
             ans = ans + cards.at(i)->toString();
         else
             ans = ans + cards.at(i)->toString() + " ";
