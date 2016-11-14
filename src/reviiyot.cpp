@@ -35,5 +35,7 @@ int main(int argc, char **argv) {
     deck->addCard("JS");
     std::cout << deck->getNumberOfCards() << std::endl;
     std::cout << deck->toString() << std::endl;
+    deck->fetchCard();
+    std::cout << deck->getNumberOfCards() << std::endl;
 }
 

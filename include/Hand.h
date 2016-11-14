@@ -11,15 +11,16 @@ using namespace std;
 
 class Hand {
 private:
-	bool compare(const Card &left, const Card &right);
+	bool compare(Card &left, Card &right);
 	list<Card *> cards;  //The list of the players
+    int figureToInt(char fig);
 
 public:
-	bool addCard(Card *card);
+	void addCard(Card *card);
 	bool removeCard(Card &card);
 	int getNumberOfCards(); // Get the number of cards in hand
 	string toString(); // Return a list of the cards, separated by space, in one line, in a sorted order, ex: "2S 5D 10H"
-	void sortCards();
+
 };
 
 #endif

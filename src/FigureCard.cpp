@@ -15,8 +15,7 @@ FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1) {
 
 string FigureCard::toString() {
 
-    std::string ss = std::string() + this->getFigure() + this->getShape();
-    return ss;
+    return std::string() + this->getFigure() + this->getShape();
 };
 
 char FigureCard::getFigure() {
