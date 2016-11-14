@@ -15,6 +15,7 @@ private:
 public:
     Player(int newPosition, string &newName);
     string getName();
+
 };
 
 class PlayerType1 : public Player {  //For strategy 1

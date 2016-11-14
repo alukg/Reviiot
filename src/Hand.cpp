@@ -1,23 +1,56 @@
 
 #include "../include/Hand.h"
+#include <map>
 
-void Hand::sortCards() {
-    int j;
-    Card *temp;
 
-    for (int i = 0; i < cards.size(); i++) {
-        j = i;
+static int Hand::figureToInt(char fig) {
+    //need to change with N (highest numeric card value)
+    switch (fig) {
+        case 'J':
+            return 101;
+        case 'Q':
+            return 102;
+        case 'K':
+            return 103;
+        case 'A':
+            return 104;
+        default:
+            return 0;
+    }
+}
+/*
+void Hand::addCard(Card *card) {
+    bool found = false;
+    for (vector<Card *>::iterator it = this->cards.begin(); it < this->cards.end() && !found; it++) {
+        Card *tmp = *it;
+        if (compare(*card,*tmp )) {
 
-        while (j > 0 && compare(*cards.at(j), *cards.at(j - 1)) < 1) {
-            temp = cards.at(j);
-            cards.at(j) = cards.at(j - 1);
-            cards.at(j - 1) = temp;
-            j--;
         }
     }
 }
+*/
 
-int Hand::compare(Card &left, Card &right) {
+
+void Hand::addCard(Card *card) {
+    if(this->cards.)
+}
+bool Hand::compare( Card &left1, Card &right1) {
+
+    int left =figureToInt(left1.toString()[0]);
+    if (left ==0) {
+        left = std::stoi(left1.toString().substr(0,(int)(left1.toString().length() -1)));
+    }
+
+    int right =figureToInt(right1.toString()[0]);
+    if (right ==0) {
+        right = std::stoi(right1.toString().substr(0,(int)(right1.toString().length() -1)));
+    }
+
+    if (left<right)
+        return true;
+    else
+        return false;
+
 
 }
 
