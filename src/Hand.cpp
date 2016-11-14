@@ -56,21 +56,19 @@ int Hand::getNumberOfCards() {
 
 string Hand::toString() {
     string ans = "";
-    for (std::list<int>::iterator *it = cards.begin(); *it != cards.end(); *it++) {
-        if (it == cards.size() - 1)
-            ans = ans + cards.at(i)->toString();
-        else
-            ans = ans + cards.at(i)->toString() + " ";
+    for (list<Card *>::iterator it = cards.begin(); it != cards.end(); it++){
+        ans = ans + (*it)->toString() + " ";
     }
 }
 
 bool Hand::removeCard(Card &card) {
     bool found = false;
-    for(int i=0;!found & i<cards.size();i++){
-        if(cards.at(i)->toString() == card.toString()){
+    for (list<Card *>::iterator it = cards.begin(); it != cards.end(); it++){
+        if(*it == &card){
             found = true;
-            //delete card from vector;
+            removeCard(card);
         }
     }
+    return found;
 }
 
