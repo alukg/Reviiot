@@ -1,6 +1,5 @@
 
 #include "../include/Deck.h"
-
 #include <iostream>
 
 using namespace std;
@@ -11,7 +10,7 @@ void Deck::addCard(string cardName) {
     Figure figure;
     int numValue;
 
-    switch (cardName.at(1)){
+    switch (cardName.at(cardName.length()-1)){
         case 'C':
             shape = Club;
             break;
@@ -40,7 +39,7 @@ void Deck::addCard(string cardName) {
             break;
         default:
             isFigure = false;
-            numValue = cardName.at(0) - '0';
+            numValue = std::stoi(cardName.substr(0,(int)(cardName.length() -1)));
             break;
     }
 
@@ -53,5 +52,25 @@ void Deck::addCard(string cardName) {
         card = new NumericCard(numValue,shape);
     }
 
-    Q.push(card);
+    Q.push_back(card);
+};
+
+Card* Deck::fetchCard() {
+    Card *c = this->Q.front();
+    this->Q.pop_front();
+    return c;
+};
+
+int Deck::getNumberOfCards() {
+    return this->Q.size();
+};
+
+string Deck::toString() {
+    //to be deleted
+    string s="";
+    for (deque<Card *>::iterator it=Q.begin(); it != Q.end(); ++it){
+        Card *tmp = *it;
+        s= s + tmp->toString() + ' ';
+    }
+    return s;
 }
