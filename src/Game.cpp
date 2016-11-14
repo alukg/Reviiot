@@ -40,10 +40,15 @@ Game::Game(char *configurationFile) {
 void Game::insertCardsToDeck(Deck &deck, string deckCards) {
     long length = deckCards.length();
     int iterator = 0;
+    int subIterator = 0;
     while (abs(length - iterator) > 1) {
         if (deckCards.at(iterator) != ' ') {
-            deck.addCard(deckCards.substr(iterator, 2));
-            iterator = iterator + 2;
+            subIterator = iterator;
+            while(abs(length - subIterator) > 1 && deckCards.at(subIterator) != ' '){
+                subIterator++;
+            }
+            deck.addCard(deckCards.substr(iterator, subIterator - iterator));
+            iterator = subIterator;
         }
         iterator++;
     }

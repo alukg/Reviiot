@@ -11,7 +11,7 @@ using namespace std;
 
 class Hand {
 private:
-	bool Hand::compare(const Card &left, const Card &right);
+	bool compare(const Card &left, const Card &right);
 	list<Card *> cards;  //The list of the players
 
 public:
