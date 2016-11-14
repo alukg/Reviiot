@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
 //	Game game = Game(configurationFile);
 
     //string configurationFile(argv[1]);
-
+/*
     char *configurationFile = (char *) "#Verbal ON\n"
                 "1\n"
                 "\n"
@@ -28,12 +28,12 @@ int main(int argc, char **argv) {
 
     Game game = Game(configurationFile);
 	game.init();
-
-	Card *c1 = new NumericCard(5,Heart);
-	Card *c2 = new FigureCard(Jack,Club);
-
-	std::cout << c1->toString() <<endl;
-	std::cout << c2->toString() << endl;
-	return 0;
+*/
+	Deck *deck = new Deck();
+    deck->addCard("2C");
+    deck->addCard("10H");
+    deck->addCard("JS");
+    std::cout << deck->getNumberOfCards() << std::endl;
+    std::cout << deck->toString() << std::endl;
 }
 

@@ -75,7 +75,7 @@ void Game::init() {
 
 void Game::giveCards(Player &player) {
     for (int i = 1; i <= 7; i++) {
-        player.addCard(deck.fetchCard());
+//        player.addCard(deck.fetchCard());
     }
     player.sortCards();
 }
