@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
 
 #include "Card.h"
 
@@ -10,8 +11,8 @@ using namespace std;
 
 class Hand {
 private:
-	int compare(Card &left, Card &right);
-	vector<Card *> cards;  //The list of the players
+	bool Hand::compare(const Card &left, const Card &right);
+	list<Card *> cards;  //The list of the players
 
 public:
 	bool addCard(Card *card);
