@@ -34,8 +34,11 @@ int main(int argc, char **argv) {
     d->addCard("2S");
     d->addCard("KH");
     d->addCard("AD");
-    cout << hand->getNumberOfCards() << endl;
-    cout << hand->toString() << endl;
 
+    cout << hand->getNumberOfCards() << endl;
+    string s = hand->toString();
+    cout << s<< endl;
+
+    return 0;
 }
 

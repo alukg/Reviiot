@@ -3,7 +3,7 @@
 #include <map>
 
 
-static int Hand::figureToInt(char fig) {
+int Hand::figureToInt(char fig) {
     //need to change with N (highest numeric card value)
     switch (fig) {
         case 'J':
@@ -59,6 +59,7 @@ string Hand::toString() {
     for (list<Card *>::iterator it = cards.begin(); it != cards.end(); it++){
         ans = ans + (*it)->toString() + " ";
     }
+    return ans;
 }
 
 bool Hand::removeCard(Card &card) {
