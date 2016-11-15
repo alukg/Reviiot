@@ -34,7 +34,7 @@ Game::Game(char *configurationFile) {
     }
 
     // need to check how to delete that kind of variable
-    delete configurationFile;
+    //delete configurationFile;
 }
 
 void Game::insertCardsToDeck(Deck &deck, string deckCards) {

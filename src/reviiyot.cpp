@@ -29,7 +29,10 @@ int main(int argc, char **argv) {
     Game game = Game(configurationFile);
 	game.init();
 
-
+    cout <<game.deck.getNumberOfCards() << endl;
+    cout<< game.deck.toString() << endl;
+    cout<< game.deck.fetchCard()->toString() << endl;
+    cout<< game.deck.toString() << endl;
     return 0;
 }
 
