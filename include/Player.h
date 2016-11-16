@@ -15,9 +15,14 @@ private:
     const int position;
     Game &game;
 
+protected:
+    void askForCard(string card, Player* player);
+    Card* checkForCard(string card);
+
 public:
     Player(int newPosition, string &newName, Game &newgame);
     string getName();
+    void playTurn();
 
 };
 

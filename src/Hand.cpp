@@ -73,3 +73,6 @@ bool Hand::removeCard(Card &card) {
     return found;
 }
 
+list<Card *>& Hand::getCards() {
+    return this->cards;
+}

@@ -83,3 +83,15 @@ void Game::giveCards(Player &player) {
         player.addCard(deck.fetchCard());
     }
 }
+
+
+vector<Player *>& Game::getPlayers() {
+    return this->players;
+}
+
+
+Deck& Game::getGameDeck() {
+    return this->deck;
+}
+
+
