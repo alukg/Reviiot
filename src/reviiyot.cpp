@@ -28,6 +28,8 @@ int main(int argc, char **argv) {
 
     Game game = Game(configurationFile);
 	game.init();
+    Game initializedGame = game;
+    //game.play();
 
     cout <<game.deck.getNumberOfCards() << endl;
     cout<< game.deck.toString() << endl;

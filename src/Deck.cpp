@@ -9,6 +9,10 @@ Deck::Deck() {
     Q = new deque<Card*>();
 }
 
+Deck::Deck(const Deck &other) {
+
+}
+
 void Deck::addCard(string cardName) {
     Shape shape;
     bool isFigure = true;
@@ -62,9 +66,14 @@ void Deck::addCard(string cardName) {
 };
 
 Card* Deck::fetchCard() {
-    Card *c = this->Q->front();
-    this->Q->pop_front();
-    return c;
+    if(Q->size()>0) {
+        Card *c = this->Q->front();
+        this->Q->pop_front();
+        return c;
+    }
+    else {
+        //throw exception or null or something else
+    }
 };
 
 int Deck::getNumberOfCards() {

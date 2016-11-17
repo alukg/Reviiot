@@ -14,31 +14,33 @@ private:
     const string name;
     const int position;
     Game &game;
+    int type;
 
 public:
-    Player(int newPosition, string &newName, Game &newgame);
+    Player(int newPosition, string &newName, int type, Game &newGame);
     string getName();
+    int getType();
 
 };
 
 class PlayerType1 : public Player {  //For strategy 1
 public:
-    PlayerType1(int newPosition, string newName, Game &newgame);
+    PlayerType1(int newPosition, string newName, Game &newGame);
 };
 
 class PlayerType2 : public Player {  //For strategy 2
 public:
-    PlayerType2(int newPosition, string newName, Game &newgame);
+    PlayerType2(int newPosition, string newName, Game &newGame);
 };
 
 class PlayerType3 : public Player {  //For strategy 3
 public:
-    PlayerType3(int newPosition, string newName, Game &newgame);
+    PlayerType3(int newPosition, string newName, Game &newGame);
 };
 
 class PlayerType4 : public Player {  //For strategy 4
 public:
-    PlayerType4(int newPosition, string newName, Game &newgame);
+    PlayerType4(int newPosition, string newName, Game &newGame);
 };
 
 #endif
