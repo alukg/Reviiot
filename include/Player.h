@@ -16,10 +16,15 @@ private:
     Game &game;
     int type;
 
+protected:
+    void askForCard(string card, Player* player);
+    Card* checkForCard(string card);
+
 public:
     Player(int newPosition, string &newName, int type, Game &newGame);
     string getName();
     int getType();
+    void playTurn();
 
 };
 
