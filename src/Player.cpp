@@ -1,6 +1,6 @@
 
 #include "Player.h"
-#include "Game.h";
+#include "Game.h"
 #include <iostream>
 
 /* Default constructor */
@@ -11,15 +11,19 @@ string Player::getName() {
     return name;
 }
 
-Card* Player::checkForCard(string cardRequested) {
+list <Card*> Player::checkForCard(string cardRequested) {
     list <Card *> &l = this->getCards();
+    list <Card *> returnedCards;
     for (list<Card *>::iterator it = l.begin(); it != l.end(); it++) {
         Card *tmp = *it;
-        if(tmp->toString() == cardRequested){
-            return tmp;
+        if(tmp->toString().substr(0,(int)(tmp->toString().length() -1)) == cardRequested){
+            returnedCards.push_back(tmp);
         }
     }
-    return nullptr;
+    if(returnedCards.size() != 0)
+        return returnedCards;
+    else
+        return nullptr;
 }
 /*
 void Player::askForCard(string card, Player* playerAsked) {
@@ -34,10 +38,19 @@ void Player::askForCard(string card, Player* playerAsked) {
  */
 
 void Player::askForCard(string card, Player *player) {
-    Card* d = player->checkForCard(card);
-    if(d== nullptr)
+    list<Card*> cardsFromPlayer = player->checkForCard(card);
+    if(cardsFromPlayer== nullptr)
     {
-        d = game.getGameDeck().fetchCard();
-        
+        Card *d =game.getGameDeck().fetchCard();
+        this->addCard(d);
+    }
+    else {
+        for (list<Card *>::iterator it = cardsFromPlayer.begin(); it != cardsFromPlayer.end(); it++) {
+            Card *tmp = *it;
+            this->addCard(tmp);
+        }
     }
 }
+
+
+

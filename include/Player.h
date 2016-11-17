@@ -17,7 +17,7 @@ private:
 
 protected:
     void askForCard(string card, Player* player);
-    Card* checkForCard(string card);
+    list<Card*> checkForCard(string cardNum);
 
 public:
     Player(int newPosition, string &newName, Game &newgame);
