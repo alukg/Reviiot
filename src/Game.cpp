@@ -2,11 +2,33 @@
 #include <sstream>
 #include <algorithm>
 
+Game::Game(const Game &other) :
+        deck(other.deck) {
+    highestNumValue = other.highestNumValue;
+    verbalOn = other.verbalOn;
+
+    for(vector<Player *>::size_type i = 0; i != other.players.size(); i++) {
+        switch(other.players[i]->getType()){
+            case 1:
+                players[i] = new PlayerType1(*other.players[i]);
+                break;
+            case 2:
+                players[i] = new PlayerType2(*other.players[i]);
+                break;
+            case 3:
+                players[i] = new PlayerType3(*other.players[i]);
+                break;
+            case 4:
+                players[i] = new PlayerType4(*other.players[i]);
+                break;
+        }
+    }
+
+}
+
 Game::Game(char *configurationFile) {
     istringstream f(configurationFile);
     string line;
-
-    int highestNumValue;
 
     int counter = 1;
     while (getline(f, line) && counter != 5) {
@@ -44,7 +66,7 @@ void Game::insertCardsToDeck(Deck &deck, string deckCards) {
     while (abs(length - iterator) > 1) {
         if (deckCards.at(iterator) != ' ') {
             subIterator = iterator;
-            while(abs(length - subIterator) > 1 && deckCards.at(subIterator) != ' '){
+            while (abs(length - subIterator) > 1 && deckCards.at(subIterator) != ' ') {
                 subIterator++;
             }
             deck.addCard(deckCards.substr(iterator, subIterator - iterator));

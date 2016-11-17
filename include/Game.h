@@ -12,6 +12,7 @@ using namespace std;
 class Game {
 private:
 	vector<Player *> players;  //The list of the players
+	int highestNumValue;
 	bool verbalOn;
     Deck deck;                 //The deck of the game
 	void insertCardsToDeck(Deck &deck, string line);
@@ -20,6 +21,7 @@ private:
 public:
 
 	Game(char* configurationFile);
+	Game( const Game& other );
 	void init();
 	void play();
 	void printState();        //Print the state of the game as described in the assignment.
