@@ -12,6 +12,7 @@ string Player::getName() {
 }
 
 
+
 int Player::getType() {
     return type;
 }
