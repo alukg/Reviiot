@@ -80,5 +80,3 @@ void Player::isFour() {
         }
     }
 }
-
-

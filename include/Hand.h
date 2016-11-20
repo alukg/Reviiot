@@ -12,7 +12,7 @@ using namespace std;
 class Hand {
 private:
 	bool compare(Card &left, Card &right);
-	list<Card *> cards;  //The list of the players
+	list<Card *> cards;  //The list of the cards
     int figureToInt(char fig);
 
 public:

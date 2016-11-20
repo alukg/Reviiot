@@ -18,8 +18,8 @@ private:
 	void insertCardsToDeck(Deck &deck, string line);
 	void addPlayer(string playerName, int playerStrategy, int playerCounter);
 	void giveCards(Player &player);
-public:
 
+public:
 	Game(char* configurationFile);
 	Game( const Game& other );
 	void init();
@@ -29,7 +29,7 @@ public:
     void printNumberOfTurns(); //Print the number of played turns at any given time.
     vector<Player *>& getPlayers();
     Deck& getGameDeck();
-
+    Player* getPlayerWithMostCards(Player* me);
 };
 
 #endif

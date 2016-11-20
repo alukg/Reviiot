@@ -3,25 +3,24 @@
 #include <algorithm>
 
 Game::Game(const Game &other) :
-        deck(other.deck), highestNumValue(other.highestNumValue),verbalOn(other.verbalOn) {
+        deck(other.deck), highestNumValue(other.highestNumValue), verbalOn(other.verbalOn) {
 
-    for(vector<Player *>::size_type i = 0; i != other.players.size(); i++) {
-        switch(other.players[i]->getType()){
+    for (vector<Player *>::iterator it = other.players.begin(); it != other.players.end(); it++) {
+        switch (other.players[it]->getType()) {
             case 1:
-                this->players[i] = new PlayerType1(*other.players[i]);
+                this->players[it] = new PlayerType1(*other.players[it]);
                 break;
             case 2:
-                this->players[i] = new PlayerType2(*other.players[i]);
+                this->players[it] = new PlayerType2(*other.players[it]);
                 break;
             case 3:
-                this->players[i] = new PlayerType3(*other.players[i]);
+                this->players[it] = new PlayerType3(*other.players[it]);
                 break;
             case 4:
-                this->players[i] = new PlayerType4(*other.players[i]);
+                this->players[it] = new PlayerType4(*other.players[it]);
                 break;
         }
     }
-
 }
 
 Game::Game(char *configurationFile) {
@@ -92,6 +91,23 @@ void Game::addPlayer(string playerName, int playerStrategy, int position) {
     }
 }
 
+Player *Game::getPlayerWithMostCards(Player* me) {
+    Player* chosenPlayer = nullptr;
+    int maxNumOfCards = 0;
+    int playerNumOfCards = 0;
+    for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
+        if(*it != me){
+            playerNumOfCards = (*it)->getNumberOfCards();
+            if(playerNumOfCards>=maxNumOfCards){
+                maxNumOfCards = playerNumOfCards;
+                chosenPlayer = *it;
+            }
+        }
+    }
+
+    return chosenPlayer;
+}
+
 void Game::init() {
     for (Player *player : players) {
         giveCards(*player);
@@ -105,12 +121,12 @@ void Game::giveCards(Player &player) {
 }
 
 
-vector<Player *>& Game::getPlayers() {
+vector<Player *> &Game::getPlayers() {
     return this->players;
 }
 
 
-Deck& Game::getGameDeck() {
+Deck &Game::getGameDeck() {
     return this->deck;
 }
 
