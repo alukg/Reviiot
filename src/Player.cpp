@@ -4,17 +4,23 @@
 #include <iostream>
 
 /* Default constructor */
-Player::Player(int newPosition, string &newName, int newType, Game &newGame) :
+Player::Player(int newPosition, string newName, int newType, Game &newGame) :
         position(newPosition), name(newName), type(newType), game(newGame) {}
 
 string Player::getName() {
     return name;
 }
 
-
-
 int Player::getType() {
     return type;
+}
+
+int Player::getPosition() {
+    return position;
+}
+
+Game& Player::getGame() {
+    return game;
 }
 
 list <Card*> Player::checkForCard(string cardRequested) {

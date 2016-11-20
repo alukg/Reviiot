@@ -3,23 +3,21 @@
 #include <algorithm>
 
 Game::Game(const Game &other) :
-        deck(other.deck) {
-    highestNumValue = other.highestNumValue;
-    verbalOn = other.verbalOn;
+        deck(other.deck), highestNumValue(other.highestNumValue),verbalOn(other.verbalOn) {
 
     for(vector<Player *>::size_type i = 0; i != other.players.size(); i++) {
         switch(other.players[i]->getType()){
             case 1:
-                players[i] = new PlayerType1(*other.players[i]);
+                this->players[i] = new PlayerType1(*other.players[i]);
                 break;
             case 2:
-                players[i] = new PlayerType2(*other.players[i]);
+                this->players[i] = new PlayerType2(*other.players[i]);
                 break;
             case 3:
-                players[i] = new PlayerType3(*other.players[i]);
+                this->players[i] = new PlayerType3(*other.players[i]);
                 break;
             case 4:
-                players[i] = new PlayerType4(*other.players[i]);
+                this->players[i] = new PlayerType4(*other.players[i]);
                 break;
         }
     }

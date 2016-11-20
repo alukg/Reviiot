@@ -4,8 +4,9 @@
 #include <iostream>
 using namespace std;
 
-Card::Card(Shape shape1) {
+Card::Card(Shape shape1, Type type1) {
     shape = shape1;
+    type = type1;
 };
 
 char Card::getShape() {
@@ -21,6 +22,10 @@ char Card::getShape() {
     }
     return 0;
 };
+
+Type Card::getType(){
+    return type;
+}
 
 Card::~Card() {
     

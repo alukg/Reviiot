@@ -2,7 +2,7 @@
 #define DECK_H_
 
 #include <iostream>
-#include <queue>
+#include <deque>
 
 #include "Card.h"
 
