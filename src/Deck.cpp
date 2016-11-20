@@ -6,7 +6,7 @@ using namespace std;
 
 
 Deck::Deck() {
-    Q = new deque<Card *>();
+    Q = new deque<Card*>();
 }
 
 Deck::Deck(const Deck &other) {
@@ -21,13 +21,17 @@ Deck::Deck(const Deck &other) {
     }
 }
 
+Deck::Deck() {
+
+}
+
 void Deck::addCard(string cardName) {
     Shape shape;
     bool isFigure = true;
     Figure figure;
     int numValue;
 
-    switch (cardName.at(cardName.length() - 1)) {
+    switch (cardName.at(cardName.length()-1)){
         case 'C':
             shape = Club;
             break;
@@ -41,7 +45,7 @@ void Deck::addCard(string cardName) {
             shape = Spade;
             break;
     }
-    switch (cardName.at(0)) {
+    switch (cardName.at(0)){
         case 'J':
             figure = Jack;
             break;
@@ -56,26 +60,27 @@ void Deck::addCard(string cardName) {
             break;
         default:
             isFigure = false;
-            numValue = std::stoi(cardName.substr(0, (int) (cardName.length() - 1)));
+            numValue = std::stoi(cardName.substr(0,(int)(cardName.length() -1)));
             break;
     }
 
 
-    if (isFigure) {
-        FigureCard *card = new FigureCard(figure, shape);
-        Q->push_front(card);
-    } else {
-        NumericCard *card = new NumericCard(numValue, shape);
-        Q->push_front(card);
+    if (isFigure){
+        FigureCard *card = new FigureCard(figure,shape);
+        Q.push_front(card);
+    }
+    else{
+        NumericCard *card = new NumericCard(numValue,shape);
+        Q.push_front(card);
     }
 
 
 };
 
-Card *Deck::fetchCard() {
-    if (Q->size() > 0) {
-        Card *c = this->Q->front();
-        this->Q->pop_front();
+Card* Deck::fetchCard() {
+    if(Q.size()>0) {
+        Card *c = Q.front();
+        Q.pop_front();
         return c;
     } else {
         //throw exception or null or something else
@@ -83,7 +88,7 @@ Card *Deck::fetchCard() {
 };
 
 int Deck::getNumberOfCards() {
-    return this->Q->size();
+    return Q.size();
 };
 
 string Deck::toString() {
@@ -91,7 +96,7 @@ string Deck::toString() {
     string s = "";
     for (deque<Card *>::iterator it = Q->begin(); it != Q->end(); it++) {
         Card *tmp = *it;
-        s = s + tmp->toString() + ' ';
+        s= s + tmp->toString() + ' ';
     }
     return s;
 }

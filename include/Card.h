@@ -28,10 +28,11 @@ class Card {
 protected:
     Shape shape;
     Type type;
-    char getShape();
+    char getShape() const;
 public:
     Card(Shape shape1, Type type1);
     Type getType();
+    virtual string getCardValue() const =0;
     virtual string toString() = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
     virtual ~Card();
 };
@@ -39,12 +40,12 @@ public:
 class FigureCard : public Card {
 private:
     Figure figure;
-    char getFigure();
+    char getFigure() const;
 public:
     FigureCard(Figure figure1, Shape shape1);
     FigureCard(const FigureCard &other);
-    virtual string toString() override;
-
+    virtual string toString() const override;
+    virtual string getCardValue() const override;
 };
 
 class NumericCard : public Card {
@@ -53,7 +54,8 @@ private:
 public:
     NumericCard(int num, Shape shape);
     NumericCard(const NumericCard &other);
-    virtual string toString() override;
+    virtual string getCardValue() const override;
+    virtual string toString() const override;
 };
 
 #endif

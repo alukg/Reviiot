@@ -34,12 +34,12 @@ bool Hand::compare( Card &left1, Card &right1) {
 
     int left =figureToInt(left1.toString()[0]);
     if (left ==0) {
-        left = std::stoi(left1.toString().substr(0,(int)(left1.toString().length() -1)));
+        left = std::stoi(left1.getCardValue());
     }
 
     int right =figureToInt(right1.toString()[0]);
     if (right ==0) {
-        right = std::stoi(right1.toString().substr(0,(int)(right1.toString().length() -1)));
+        right = std::stoi(right1.getCardValue());
     }
 
     if (left<right)
@@ -62,12 +62,13 @@ string Hand::toString() {
     return ans;
 }
 
+//need to be checked
 bool Hand::removeCard(Card &card) {
     bool found = false;
     for (list<Card *>::iterator it = cards.begin(); it != cards.end(); it++){
         if(*it == &card){
             found = true;
-            removeCard(card);
+            cards.erase(it);
         }
     }
     return found;
