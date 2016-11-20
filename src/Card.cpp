@@ -8,7 +8,7 @@ Card::Card(Shape shape1) {
     shape = shape1;
 };
 
-char Card::getShape() {
+char Card::getShape() const {
     switch (this->shape) {
         case Club:
             return 'C';

@@ -15,10 +15,12 @@ private:
     const int position;
     Game &game;
     int type;
+    void isFour();
+    virtual pair<string, Player> PlayerStargety() =0;
 
 protected:
     void askForCard(string card, Player* player);
-    list<Card*> checkForCard(string cardNum);
+    list<Card*> *checkForCard(string cardNum);
 
 public:
     Player(int newPosition, string &newName, int type, Game &newGame);

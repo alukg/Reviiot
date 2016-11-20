@@ -13,12 +13,12 @@ FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1) {
     this->figure=figure1;
 };
 
-string FigureCard::toString() {
+string FigureCard::toString() const {
 
-    return std::string() + this->getFigure() + this->getShape();
+    return std::string() + getFigure() + getShape();
 };
 
-char FigureCard::getFigure() {
+char FigureCard::getFigure() const {
     switch (this->figure) {
         case Jack:
             return 'J';
@@ -32,4 +32,7 @@ char FigureCard::getFigure() {
     return 0;
 };
 
+string FigureCard::getCardValue() const {
+    return string() + getFigure();
+};
 

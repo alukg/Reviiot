@@ -8,20 +8,20 @@ Game::Game(const Game &other) :
     verbalOn = other.verbalOn;
 
     for(vector<Player *>::size_type i = 0; i != other.players.size(); i++) {
-        switch(other.players[i]->getType()){
-            case 1:
-                players[i] = new PlayerType1(*other.players[i]);
-                break;
-            case 2:
-                players[i] = new PlayerType2(*other.players[i]);
-                break;
-            case 3:
-                players[i] = new PlayerType3(*other.players[i]);
-                break;
-            case 4:
-                players[i] = new PlayerType4(*other.players[i]);
-                break;
-        }
+//        switch(other.players[i]->getType()){
+//            case 1:
+//                players[i] = new PlayerType1(*other.players[i]);
+//                break;
+//            case 2:
+//                players[i] = new PlayerType2(*other.players[i]);
+//                break;
+//            case 3:
+//                players[i] = new PlayerType3(*other.players[i]);
+//                break;
+//            case 4:
+//                players[i] = new PlayerType4(*other.players[i]);
+//                break;
+//        }
     }
 
 }
@@ -78,20 +78,20 @@ void Game::insertCardsToDeck(Deck &deck, string deckCards) {
 
 //need to check how to insert the players, in the order we get them? or by astrategy?
 void Game::addPlayer(string playerName, int playerStrategy, int position) {
-    switch (playerStrategy) {
-        case 1:
-            players.push_back(new PlayerType1(position, playerName, *this));
-            break;
-        case 2:
-            players.push_back(new PlayerType2(position, playerName, *this));
-            break;
-        case 3:
-            players.push_back(new PlayerType3(position, playerName, *this));
-            break;
-        case 4:
-            players.push_back(new PlayerType4(position, playerName, *this));
-            break;
-    }
+//    switch (playerStrategy) {
+//        case 1:
+//            players.push_back(new PlayerType1(position, playerName, *this));
+//            break;
+//        case 2:
+//            players.push_back(new PlayerType2(position, playerName, *this));
+//            break;
+//        case 3:
+//            players.push_back(new PlayerType3(position, playerName, *this));
+//            break;
+//        case 4:
+//            players.push_back(new PlayerType4(position, playerName, *this));
+//            break;
+//    }
 }
 
 void Game::init() {

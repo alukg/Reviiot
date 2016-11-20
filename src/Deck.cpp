@@ -5,11 +5,11 @@
 using namespace std;
 
 
-Deck::Deck() {
-    Q = new deque<Card*>();
+Deck::Deck(const Deck &other) {
+
 }
 
-Deck::Deck(const Deck &other) {
+Deck::Deck() {
 
 }
 
@@ -32,6 +32,7 @@ void Deck::addCard(string cardName) {
         case 'S':
             shape = Spade;
             break;
+
     }
     switch (cardName.at(0)){
         case 'J':
@@ -55,20 +56,20 @@ void Deck::addCard(string cardName) {
 
     if (isFigure){
         FigureCard *card = new FigureCard(figure,shape);
-        Q->push_front(card);
+        Q.push_front(card);
     }
     else{
         NumericCard *card = new NumericCard(numValue,shape);
-        Q->push_front(card);
+        Q.push_front(card);
     }
 
 
 };
 
 Card* Deck::fetchCard() {
-    if(Q->size()>0) {
-        Card *c = this->Q->front();
-        this->Q->pop_front();
+    if(Q.size()>0) {
+        Card *c = Q.front();
+        Q.pop_front();
         return c;
     }
     else {
@@ -77,13 +78,13 @@ Card* Deck::fetchCard() {
 };
 
 int Deck::getNumberOfCards() {
-    return this->Q->size();
+    return Q.size();
 };
 
 string Deck::toString() {
     //to be deleted
     string s="";
-    for (deque<Card *>::iterator it=Q->begin(); it != Q->end(); it++){
+    for (deque<Card *>::iterator it=Q.begin(); it != Q.end(); it++){
         Card *tmp = *it;
         s= s + tmp->toString() + ' ';
     }
