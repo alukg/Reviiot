@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <iostream>
 #include <map>
+#include <list>
 
 /* Default constructor */
 Player::Player(int newPosition, string newName, int newType, Game &newGame) :
@@ -11,8 +12,6 @@ Player::Player(int newPosition, string newName, int newType, Game &newGame) :
 string Player::getName() {
     return name;
 }
-
-
 
 int Player::getType() {
     return type;
@@ -29,7 +28,7 @@ Game& Player::getGame() {
 list <Card*> *Player::checkForCard(string cardRequested) {
     int countCardstoTake=0;
     list <Card *> &l = this->getCards();
-    list <Card *> *returnedCards =new list<Card *>();
+    list <Card *> *returnedCards = new list<Card *>();
     for (list<Card *>::iterator it = l.begin(); it != l.end(); it++) {
         Card *tmp = *it;
         if(tmp->getCardValue() == cardRequested){

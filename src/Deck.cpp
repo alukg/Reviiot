@@ -21,10 +21,6 @@ Deck::Deck(const Deck &other) {
     }
 }
 
-Deck::Deck() {
-
-}
-
 void Deck::addCard(string cardName) {
     Shape shape;
     bool isFigure = true;
