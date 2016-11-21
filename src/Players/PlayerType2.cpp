@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "../../include/Game.h"
 
 #include <iostream>
 
@@ -40,6 +41,6 @@ void PlayerType2::playTurn() {
         if(counter < minCards)
             chosenCard = presentCard;
 
-//    Player* chosenPlayer = game.getPlayerWithMostCards(*this);
-//    askForCard(chosenCard,chosenPlayer);
+    Player* chosenPlayer = game.getPlayerWithMostCards(this);
+    askForCard(chosenCard,chosenPlayer);
 }

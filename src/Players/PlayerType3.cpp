@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "../../include/Game.h"
 
 #include <iostream>
 
@@ -16,6 +17,6 @@ PlayerType3::PlayerType3(PlayerType3 &other) : Player(other.getPosition(), other
 void PlayerType3::playTurn() {
     string chosenCard = getCards().back()->toString().substr(0, getCards().back()->toString().length() - 1);
 
-    //Player *chosenPlayer = game.getPlayerWithMostCards(*this);
-//    askForCard(chosenCard, chosenPlayer);
+    Player *chosenPlayer = game.getPlayerWithMostCards(this);
+    askForCard(chosenCard, chosenPlayer);
 }

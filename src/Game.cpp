@@ -152,10 +152,11 @@ bool Game::isFinished() const {
 void Game::play() {
     while(!isFinished())
     {
-        for (vector<Player *>::const_iterator it = players.begin(); it != players.end(); it++) {
-            if ((*it)->getPosition() == numberOfTurns % players.size()) {
+        for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
+            if ((*it)->getPosition() == (numberOfTurns % players.size()) + 1) {
                 (*it)->playTurn();
                 numberOfTurns++;
+                printState();
                 break;
             }
         }

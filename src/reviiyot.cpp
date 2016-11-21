@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 	game.init();
     game.printState();
 //    Game initializedGame = game;
-//    game.play();
+    game.play();
 
     return 0;
 }
