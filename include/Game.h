@@ -11,9 +11,9 @@ using namespace std;
 
 class Game {
 private:
-	vector<Player *> players;  //The list of the players
-	int highestNumValue;
-	int numberOfTurns;
+    vector<Player *> players;  //The list of the players
+    static int highestNumValue;
+    int numberOfTurns;
 	bool verbalOn;
     Deck deck;                 //The deck of the game
 	void insertCardsToDeck(Deck &deck, string line);
@@ -21,7 +21,9 @@ private:
 	void giveCards(Player &player);
 	bool isFinished() const;
 	int getNumberOfPlayers() const;
+
 public:
+    static int getHighestNumValue();
 	Game(char* configurationFile);
 	Game( const Game& other );
 	void init();

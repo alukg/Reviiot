@@ -1,19 +1,20 @@
 
 #include "../include/Hand.h"
 #include <map>
+#include <Game.h>
 
 
 int Hand::figureToInt(char fig) {
     //need to change with N (highest numeric card value)
     switch (fig) {
         case 'J':
-            return 101;
+            return Game::getHighestNumValue() + 1;
         case 'Q':
-            return 102;
+            return Game::getHighestNumValue() + 2;
         case 'K':
-            return 103;
+            return Game::getHighestNumValue() + 3;
         case 'A':
-            return 104;
+            return Game::getHighestNumValue() + 4;
         default:
             return 0;
     }

@@ -22,6 +22,7 @@
 //        }
 //    }
 //}
+int Game::highestNumValue;
 
 Game::Game(char *configurationFile) : numberOfTurns(0) {
     istringstream f(configurationFile);
@@ -184,4 +185,8 @@ void Game::printWinner() {
         else
             cout << "***** The Winner is:" + winnerLine + " *****" <<endl;
     }
+}
+
+int Game::getHighestNumValue() {
+    return highestNumValue;
 }
