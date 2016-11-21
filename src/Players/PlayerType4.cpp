@@ -17,5 +17,5 @@ void PlayerType4::playTurn() {
     string chosenCard = getCards().front()->toString().substr(0, getCards().front()->toString().length()-1);
 
     //Player* chosenPlayer = game.getPlayerWithMostCards(*this);
-    askForCard(chosenCard,chosenPlayer);
+//    askForCard(chosenCard,chosenPlayer);
 }

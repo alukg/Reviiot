@@ -6,20 +6,20 @@ using namespace std;
 
 
 Deck::Deck() {
-    Q = new deque<Card*>();
+
 }
 
-Deck::Deck(const Deck &other) {
-    for (deque<Card *>::iterator it = other.Q->begin(); it != other.Q->end(); ++it) {
-        if ((*it)->getType() == Num) {
-            NumericCard *card = new NumericCard(*it);
-            Q->push_front(card);
-        } else {
-            FigureCard *card = new FigureCard(*it);
-            Q->push_front(card);
-        }
-    }
-}
+//Deck::Deck(const Deck &other) {
+//    for (deque<Card *>::iterator it = other.Q->begin(); it != other.Q->end(); ++it) {
+//        if ((*it)->getType() == Num) {
+//            NumericCard *card = new NumericCard(*it);
+//            Q->push_front(card);
+//        } else {
+//            FigureCard *card = new FigureCard(*it);
+//            Q->push_front(card);
+//        }
+//    }
+//}
 
 void Deck::addCard(string cardName) {
     Shape shape;
@@ -62,8 +62,7 @@ void Deck::addCard(string cardName) {
 
 
     if (isFigure){
-        FigureCard *card = new FigureCard(figure,shape);
-        Q.push_front(card);
+        FigureCard *card = new FigureCard(figure,shape);Q.push_front(card);
     }
     else{
         NumericCard *card = new NumericCard(numValue,shape);
@@ -90,7 +89,7 @@ int Deck::getNumberOfCards() {
 string Deck::toString() {
     //to be deleted
     string s = "";
-    for (deque<Card *>::iterator it = Q->begin(); it != Q->end(); it++) {
+    for (deque<Card *>::iterator it = Q.begin(); it != Q.end(); it++) {
         Card *tmp = *it;
         s= s + tmp->toString() + ' ';
     }

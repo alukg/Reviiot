@@ -10,7 +10,7 @@ using namespace std;
 
 class Deck {
 private:
-	deque<Card *>* Q;
+	deque<Card *> Q;
 
 public:
     Deck();

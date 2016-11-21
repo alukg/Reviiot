@@ -33,7 +33,7 @@ public:
     Card(Shape shape1, Type type1);
     Type getType();
     virtual string getCardValue() const =0;
-    virtual string toString() = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
+    virtual string toString() const = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
     virtual ~Card();
 };
 
@@ -44,8 +44,8 @@ private:
 public:
     FigureCard(Figure figure1, Shape shape1);
     FigureCard(const FigureCard &other);
-    virtual string toString() const override;
-    virtual string getCardValue() const override;
+    virtual string toString() const;
+    virtual string getCardValue() const;
 };
 
 class NumericCard : public Card {
@@ -54,8 +54,8 @@ private:
 public:
     NumericCard(int num, Shape shape);
     NumericCard(const NumericCard &other);
-    virtual string getCardValue() const override;
-    virtual string toString() const override;
+    virtual string getCardValue() const;
+    virtual string toString() const;
 };
 
 #endif

@@ -8,7 +8,7 @@
 using namespace std;
 
 //Constructor
-NumericCard::NumericCard(int num, Shape shape) : Card(shape), number(num){
+NumericCard::NumericCard(int num, Shape shape) : Card(shape, Num), number(num){
 
 };
 
@@ -16,7 +16,7 @@ NumericCard::NumericCard(const NumericCard &other) : Card(other.shape, other.typ
 
 }
 
-string NumericCard::toString() {
+string NumericCard::toString() const {
     std::string s = to_string(this->number);
   return s + this->getShape();
 };

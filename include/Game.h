@@ -13,12 +13,14 @@ class Game {
 private:
 	vector<Player *> players;  //The list of the players
 	int highestNumValue;
+	int numberOfTurns;
 	bool verbalOn;
     Deck deck;                 //The deck of the game
 	void insertCardsToDeck(Deck &deck, string line);
 	void addPlayer(string playerName, int playerStrategy, int playerCounter);
 	void giveCards(Player &player);
-
+	bool isFinished() const;
+	int getNumberOfPlayers() const;
 public:
 	Game(char* configurationFile);
 	Game( const Game& other );

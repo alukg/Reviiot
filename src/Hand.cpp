@@ -21,11 +21,20 @@ int Hand::figureToInt(char fig) {
 
 void Hand::addCard(Card *card) {
     bool found = false;
-    for (list<Card *>::iterator it = this->cards.begin(); it != this->cards.end() && !found; it++) {
-        Card *tmp = *it;
-        if (compare(*card,*tmp )) {
-            cards.insert(it,card);
+    if(getNumberOfCards()==0)
+        cards.push_front(card);
+    else {
+        for (list<Card *>::iterator it = this->cards.begin(); it != this->cards.end() && !found; it++) {
+            Card *tmp = *it;
+            if (compare(*card, *tmp)) {
+                cards.insert(it, card);
+                found=true;
+            }
         }
+        if(!found){
+            cards.push_back(card);
+        }
+
     }
 }
 

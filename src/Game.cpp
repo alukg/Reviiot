@@ -2,28 +2,28 @@
 #include <sstream>
 #include <algorithm>
 
-Game::Game(const Game &other) :
-        deck(other.deck), highestNumValue(other.highestNumValue), verbalOn(other.verbalOn) {
+//Game::Game(const Game &other) :
+//        deck(other.deck), highestNumValue(other.highestNumValue), verbalOn(other.verbalOn) {
+//
+//    for (vector<Player *>::iterator it = other.players.begin(); it != other.players.end(); it++) {
+//        switch (other.players[it]->getType()) {
+//            case 1:
+//                this->players[it] = new PlayerType1(*other.players[it]);
+//                break;
+//            case 2:
+//                this->players[it] = new PlayerType2(*other.players[it]);
+//                break;
+//            case 3:
+//                this->players[it] = new PlayerType3(*other.players[it]);
+//                break;
+//            case 4:
+//                this->players[it] = new PlayerType4(*other.players[it]);
+//                break;
+//        }
+//    }
+//}
 
-    for (vector<Player *>::iterator it = other.players.begin(); it != other.players.end(); it++) {
-        switch (other.players[it]->getType()) {
-            case 1:
-                this->players[it] = new PlayerType1(*other.players[it]);
-                break;
-            case 2:
-                this->players[it] = new PlayerType2(*other.players[it]);
-                break;
-            case 3:
-                this->players[it] = new PlayerType3(*other.players[it]);
-                break;
-            case 4:
-                this->players[it] = new PlayerType4(*other.players[it]);
-                break;
-        }
-    }
-}
-
-Game::Game(char *configurationFile) {
+Game::Game(char *configurationFile) : numberOfTurns(0) {
     istringstream f(configurationFile);
     string line;
 
@@ -130,4 +130,57 @@ Deck &Game::getGameDeck() {
     return this->deck;
 }
 
+void Game::printState() {
+    cout << "Deck:" + deck.toString() << endl;
+    for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
+        cout <<(*it)->getName() + ' ' + (*it)->toString() << endl;
+    }
+}
 
+void Game::printNumberOfTurns() {
+    cout << numberOfTurns << endl;
+}
+
+bool Game::isFinished() const {
+    for (vector<Player *>::const_iterator it = players.begin(); it != players.end(); it++) {
+        if((*it)->getNumberOfCards() == 0)
+            return true;
+    }
+    return false;
+}
+
+void Game::play() {
+    while(!isFinished())
+    {
+        for (vector<Player *>::const_iterator it = players.begin(); it != players.end(); it++) {
+            if ((*it)->getPosition() == numberOfTurns % players.size()) {
+                (*it)->playTurn();
+                numberOfTurns++;
+                break;
+            }
+        }
+    }
+    printWinner();
+}
+
+
+void Game::printWinner() {
+
+    string winnerLine = " ";
+    int numOfWinners =0;
+    for (vector<Player *>::const_iterator it = players.begin(); it != players.end(); it++) {
+        if ((*it)->getNumberOfCards() == 0){
+            if(numOfWinners ==0)
+                winnerLine.append((*it)->getName());
+            else {
+                winnerLine.append(" and " + (*it)->getName());
+            }
+            numOfWinners++;
+        }
+        if (numOfWinners>1){
+            cout << "***** The winners are:" + winnerLine + " ***" << endl;
+        }
+        else
+            cout << "***** The Winner is:" + winnerLine + " *****" <<endl;
+    }
+}

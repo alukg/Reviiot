@@ -38,6 +38,6 @@ void PlayerType1::playTurn() {
         if(counter >= maxCards)
             chosenCard = presentCard;
 
-    Player* chosenPlayer = game.getPlayerWithMostCards(*this);
-    askForCard(chosenCard,chosenPlayer);
+//    Player* chosenPlayer = game.getPlayerWithMostCards(*this);
+//    askForCard(chosenCard,chosenPlayer);
 }

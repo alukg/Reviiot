@@ -9,7 +9,7 @@ using namespace std;
 
 //Constructor
 
-FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1) {
+FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1, Fig) {
     this->figure=figure1;
 };
 
@@ -22,7 +22,7 @@ string FigureCard::toString() const{
     return std::string() + this->getFigure() + this->getShape();
 };
 
-char FigureCard::getFigure() {
+char FigureCard::getFigure() const{
     switch (this->figure) {
         case Jack:
             return 'J';
