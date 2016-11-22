@@ -55,8 +55,13 @@ bool Hand::compare( Card &left1, Card &right1) {
     if (left<right)
         return true;
     else
-        return false;
-
+        if(left==right){
+            if(left1.getShape() < right1.getShape()){
+                return true;
+            }
+        }
+        else
+            return false;
 }
 
 int Hand::getNumberOfCards() const {
@@ -73,14 +78,15 @@ string Hand::toString() {
 
 //need to be checked
 bool Hand::removeCard(Card &card) {
-    bool found = false;
-    for (list<Card *>::iterator it = cards.begin(); it != cards.end(); it++){
-        if(*it == &card){
-            found = true;
-            cards.erase(it);
-        }
-    }
-    return found;
+//    bool found = false;
+//    for (list<Card *>::iterator it = cards.begin(); it != cards.end() && !found; it++){
+//        if(*it == &card){
+//            found = true;
+//            cards.erase(it);
+//        }
+//    }
+    cards.remove(&card);
+    return true;
 }
 
 list<Card *>& Hand::getCards() {

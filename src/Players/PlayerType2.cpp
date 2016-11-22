@@ -43,4 +43,5 @@ void PlayerType2::playTurn() {
 
     Player* chosenPlayer = game.getPlayerWithMostCards(*this);
     askForCard(chosenCard,chosenPlayer);
+    cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard<< endl;
 }

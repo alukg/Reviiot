@@ -27,12 +27,16 @@ list<Card *> *Player::checkForCard(string cardRequested) {
     int countCardsToTake = 0;
     std::list<Card *> &l = getCards();
     std::list<Card *> *returnedCards = new list<Card *>();
-    for (list<Card *>::iterator it = l.begin(); it != l.end(); it++) {
+    for (list<Card *>::iterator it = l.begin(); it != l.end();) {
         Card *tmp = *it;
         if (tmp->getCardValue() == cardRequested) {
             returnedCards->push_back(tmp);
-            //rgetCards().remove(tmp);
+            it++;
+            removeCard(*tmp);
             countCardsToTake++;
+        }
+        else{
+            it++;
         }
     }
     for (int i = 0; i < countCardsToTake; i++) {

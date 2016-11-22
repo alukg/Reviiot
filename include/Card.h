@@ -28,8 +28,8 @@ class Card {
 protected:
     Shape shape;
     Type type;
-    char getShape() const;
 public:
+    char getShape() const;
     Card(Shape shape1, Type type1);
     Type getType();
     virtual string getCardValue() const =0;
