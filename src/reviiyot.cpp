@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
 //
 //	Game game = Game(configurationFile);
 
-    string configurationFile(argv[1]);
+//    string configurationFile(argv[1]);
 
     char *configurationFile = (char *) "#Verbal ON\n"
                 "1\n"

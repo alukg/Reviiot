@@ -10,8 +10,17 @@ PlayerType1::PlayerType1(int newPosition, string newName, Game &newGame) : Playe
 
 }
 
-PlayerType1::PlayerType1(const Player &other) : Player(other.getPosition(), other.getName(), 1, other.getGame()) {
-
+PlayerType1::PlayerType1(Player &other) : Player(other.getPosition(), other.getName(), 1, other.getGame()) {
+    for (list<Card *>::iterator it = other.getCards().begin(); it != other.getCards().end(); it++) {
+        switch ((*it)->getType()) {
+            case Num:
+                this->addCard(new NumericCard(**it));
+                break;
+            case Fig:
+                this->addCard(new FigureCard(**it));
+                break;
+        }
+    }
 }
 
 void PlayerType1::playTurn() {
