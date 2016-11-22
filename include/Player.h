@@ -47,6 +47,9 @@ public:
     PlayerType3(int newPosition, string newName, Game &newGame);
     PlayerType3(const Player &other);
     void playTurn();
+
+private:
+    int nextPlayer;
 };
 
 class PlayerType4 : public Player {  //For strategy 4
@@ -54,6 +57,9 @@ public:
     PlayerType4(int newPosition, string newName, Game &newGame);
     PlayerType4(const Player &other);
     void playTurn();
+
+private:
+    int nextPlayer;
 };
 
 #endif
