@@ -25,19 +25,20 @@ Game &Player::getGame() const {
 
 list<Card *> *Player::checkForCard(string cardRequested) {
     int countCardsToTake = 0;
-    std::list<Card *> &l = this->getCards();
+    std::list<Card *> &l = getCards();
     std::list<Card *> *returnedCards = new list<Card *>();
     for (list<Card *>::iterator it = l.begin(); it != l.end(); it++) {
         Card *tmp = *it;
         if (tmp->getCardValue() == cardRequested) {
             returnedCards->push_back(tmp);
+            //rgetCards().remove(tmp);
             countCardsToTake++;
         }
-        for (int i = 0; i < countCardsToTake; i++) {
-            addCard(game.getGameDeck().fetchCard());
-        }
-        isFour();
     }
+    for (int i = 0; i < countCardsToTake; i++) {
+        addCard(game.getGameDeck().fetchCard());
+    }
+    isFour();
     if (returnedCards->size() != 0)
         return returnedCards;
     else
