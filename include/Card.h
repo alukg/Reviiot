@@ -43,7 +43,7 @@ private:
     char getFigure() const;
 public:
     FigureCard(Figure figure1, Shape shape1);
-    FigureCard(const FigureCard &other);
+    FigureCard(FigureCard &other);
     virtual string toString() const;
     virtual string getCardValue() const;
 };
@@ -53,7 +53,7 @@ private:
     int number;
 public:
     NumericCard(int num, Shape shape);
-    NumericCard(const NumericCard &other);
+    NumericCard(NumericCard &other);
     virtual string getCardValue() const;
     virtual string toString() const;
 };

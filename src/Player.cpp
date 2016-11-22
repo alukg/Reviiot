@@ -1,46 +1,44 @@
 
 #include "Player.h"
 #include "Game.h"
-#include <iostream>
 #include <map>
-#include <list>
 
 /* Default constructor */
 Player::Player(int newPosition, string newName, int newType, Game &newGame) :
         position(newPosition), name(newName), type(newType), game(newGame) {}
 
-string Player::getName() {
+string Player::getName() const {
     return name;
 }
 
-int Player::getType() {
+int Player::getType() const {
     return type;
 }
 
-int Player::getPosition() {
+int Player::getPosition() const {
     return position;
 }
 
-Game& Player::getGame() {
+Game &Player::getGame() const {
     return game;
 }
 
-list <Card*> *Player::checkForCard(string cardRequested) {
-    int countCardstoTake=0;
-    list <Card *> &l = this->getCards();
-    list <Card *> *returnedCards = new list<Card *>();
+list<Card *> *Player::checkForCard(string cardRequested) {
+    int countCardsToTake = 0;
+    std::list<Card *> &l = this->getCards();
+    std::list<Card *> *returnedCards = new list<Card *>();
     for (list<Card *>::iterator it = l.begin(); it != l.end(); it++) {
         Card *tmp = *it;
-        if(tmp->getCardValue() == cardRequested){
+        if (tmp->getCardValue() == cardRequested) {
             returnedCards->push_back(tmp);
-            countCardstoTake++;
+            countCardsToTake++;
         }
-        for (int i=0; i<countCardstoTake; i++) {
+        for (int i = 0; i < countCardsToTake; i++) {
             addCard(game.getGameDeck().fetchCard());
         }
         isFour();
     }
-    if(returnedCards->size() != 0)
+    if (returnedCards->size() != 0)
         return returnedCards;
     else
         return nullptr;
@@ -48,12 +46,10 @@ list <Card*> *Player::checkForCard(string cardRequested) {
 
 
 void Player::askForCard(string card, Player *player) {
-    list<Card*> *cardsFromPlayer = player->checkForCard(card);
-    if(cardsFromPlayer== nullptr)
-    {
+    std::list<Card *> *cardsFromPlayer = player->checkForCard(card);
+    if (cardsFromPlayer == nullptr) {
         addCard(game.getGameDeck().fetchCard());
-    }
-    else {
+    } else {
         for (list<Card *>::iterator it = cardsFromPlayer->begin(); it != cardsFromPlayer->end(); it++) {
             Card *tmp = *it;
             this->addCard(tmp);
@@ -65,17 +61,17 @@ void Player::askForCard(string card, Player *player) {
 //need to be Checked
 void Player::isFour() {
 
-    typedef map <string,int> mymap;
-    mymap counts;
-    for (list<Card *>:: const_iterator it = getCards().begin(); it != getCards().end(); it++) {
+    typedef map<string, int> myMap;
+    myMap counts;
+    for (list<Card *>::const_iterator it = getCards().begin(); it != getCards().end(); it++) {
         counts[(*it)->getCardValue()]++;
     }
 
-    for (list<Card *>:: iterator it = getCards().begin(); it != getCards().end();) {
-        if(counts[(*it)->getCardValue()] == 4)
-            it=getCards().erase(it);
+    for (list<Card *>::iterator it = getCards().begin(); it != getCards().end();) {
+        if (counts[(*it)->getCardValue()] == 4)
+            it = getCards().erase(it);
             //delete Card from game
-        else{
+        else {
             it++;
         }
     }

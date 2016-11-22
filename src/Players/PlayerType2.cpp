@@ -10,7 +10,7 @@ PlayerType2::PlayerType2(int newPosition, string newName, Game &newGame) : Playe
 
 }
 
-PlayerType2::PlayerType2(PlayerType2 &other) : Player(other.getPosition(), other.getName(), 1, other.getGame()) {
+PlayerType2::PlayerType2(const Player &other) : Player(other.getPosition(), other.getName(), 1, other.getGame()) {
 
 }
 
@@ -41,6 +41,6 @@ void PlayerType2::playTurn() {
         if(counter < minCards)
             chosenCard = presentCard;
 
-    Player* chosenPlayer = game.getPlayerWithMostCards(this);
+    Player* chosenPlayer = game.getPlayerWithMostCards(*this);
     askForCard(chosenCard,chosenPlayer);
 }

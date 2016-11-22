@@ -2,7 +2,6 @@
 #define PLAYER_H_
 
 #include <iostream>
-
 #include "Hand.h"
 class Game;
 
@@ -22,38 +21,38 @@ protected:
 
 public:
     Player(int newPosition, string newName, int type, Game &newGame);
-    string getName();
-    int getPosition();
-    int getType();
-    Game& getGame();
-    virtual void playTurn() = 0;
+    string getName() const;
+    int getPosition() const ;
+    int getType() const;
+    Game& getGame() const;
+    virtual void playTurn() = 0; //remember to check this again
 };
 
 class PlayerType1 : public Player {  //For strategy 1
 public:
     PlayerType1(int newPosition, string newName, Game &newGame);
-    PlayerType1(PlayerType1 &other);
+    PlayerType1(const Player &other);
     void playTurn();
 };
 
 class PlayerType2 : public Player {  //For strategy 2
 public:
     PlayerType2(int newPosition, string newName, Game &newGame);
-    PlayerType2(PlayerType2 &other);
+    PlayerType2(const Player &other);
     void playTurn();
 };
 
 class PlayerType3 : public Player {  //For strategy 3
 public:
     PlayerType3(int newPosition, string newName, Game &newGame);
-    PlayerType3(PlayerType3 &other);
+    PlayerType3(const Player &other);
     void playTurn();
 };
 
 class PlayerType4 : public Player {  //For strategy 4
 public:
     PlayerType4(int newPosition, string newName, Game &newGame);
-    PlayerType4(PlayerType4 &other);
+    PlayerType4(const Player &other);
     void playTurn();
 };
 

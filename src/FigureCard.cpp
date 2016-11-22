@@ -13,7 +13,7 @@ FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1, Fig) {
     this->figure=figure1;
 };
 
-FigureCard::FigureCard(const FigureCard &other) : Card(other.shape, other.type), figure(other.figure) {
+FigureCard::FigureCard(FigureCard &other) : Card(other.shape, other.type), figure(other.figure) {
 
 }
 

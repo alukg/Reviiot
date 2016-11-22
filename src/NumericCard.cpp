@@ -12,7 +12,7 @@ NumericCard::NumericCard(int num, Shape shape) : Card(shape, Num), number(num){
 
 };
 
-NumericCard::NumericCard(const NumericCard &other) : Card(other.shape, other.type), number(other.number) {
+NumericCard::NumericCard(NumericCard &other) : Card(other.shape, other.type), number(other.number) {
 
 }
 

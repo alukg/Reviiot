@@ -27,11 +27,19 @@ int main(int argc, char **argv) {
                 "Charlie 3";
 
     Game game = Game(configurationFile);
-	game.init();
-    game.printState();
-//    Game initializedGame = game;
+    game.init();
+    Game initializedGame = game;
     game.play();
 
+    cout << std::endl;
+    game.printWinner();
+    game.printNumberOfTurns();
+    cout << "----------" << endl;
+    cout<<"Initial State:"<<endl;
+    initializedGame.printState();
+    cout<<"----------"<<endl;
+    cout<<"Final State:"<<endl;
+    game.printState();
     return 0;
 }
 

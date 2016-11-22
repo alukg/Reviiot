@@ -9,17 +9,17 @@ Deck::Deck() {
 
 }
 
-//Deck::Deck(const Deck &other) {
-//    for (deque<Card *>::iterator it = other.Q->begin(); it != other.Q->end(); ++it) {
-//        if ((*it)->getType() == Num) {
-//            NumericCard *card = new NumericCard(*it);
-//            Q->push_front(card);
-//        } else {
-//            FigureCard *card = new FigureCard(*it);
-//            Q->push_front(card);
-//        }
-//    }
-//}
+Deck::Deck(Deck &other) {
+    for (deque<Card *>::iterator it = other.Q.begin(); it != other.Q.end(); ++it) {
+        if ((*it)->getType() == Num) {
+            NumericCard *card = new NumericCard(static_cast<NumericCard&>(**it));
+            Q.push_front(card);
+        } else {
+            FigureCard *card = new FigureCard(static_cast<FigureCard&>(**it));
+            Q.push_front(card);
+        }
+    }
+}
 
 void Deck::addCard(string cardName) {
     Shape shape;

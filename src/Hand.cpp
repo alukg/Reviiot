@@ -57,10 +57,9 @@ bool Hand::compare( Card &left1, Card &right1) {
     else
         return false;
 
-
 }
 
-int Hand::getNumberOfCards() {
+int Hand::getNumberOfCards() const {
     return cards.size();
 }
 

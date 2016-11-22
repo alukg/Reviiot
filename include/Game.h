@@ -24,8 +24,9 @@ private:
 
 public:
     static int getHighestNumValue();
-	Game(char* configurationFile);
-	Game( const Game& other );
+	Game( char* configurationFile );
+	Game( Game &other );
+	Game( Game&& other ) noexcept;
 	void init();
 	void play();
 	void printState();        //Print the state of the game as described in the assignment.
@@ -33,7 +34,7 @@ public:
     void printNumberOfTurns(); //Print the number of played turns at any given time.
     vector<Player *>& getPlayers();
     Deck& getGameDeck();
-    Player* getPlayerWithMostCards(Player* me);
+    Player* getPlayerWithMostCards(Player &me);
 };
 
 #endif
