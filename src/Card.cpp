@@ -9,6 +9,10 @@ Card::Card(Shape shape1, Type type1) {
     type = type1;
 };
 
+Card::Card(Card &other): shape(other.shape), type(other.type){
+
+};
+
 char Card::getShape() const {
     switch (this->shape) {
         case Club:
@@ -26,6 +30,10 @@ char Card::getShape() const {
 Type Card::getType(){
     return type;
 }
+
+Figure Card::getFigure() const{
+    return Ace;
+};
 
 Card::~Card() {
     
