@@ -31,21 +31,21 @@ public:
 class PlayerType1 : public Player {  //For strategy 1
 public:
     PlayerType1(int newPosition, string newName, Game &newGame);
-    PlayerType1(const Player &other);
+    PlayerType1(Player &other);
     void playTurn();
 };
 
 class PlayerType2 : public Player {  //For strategy 2
 public:
     PlayerType2(int newPosition, string newName, Game &newGame);
-    PlayerType2(const Player &other);
+    PlayerType2(Player &other);
     void playTurn();
 };
 
 class PlayerType3 : public Player {  //For strategy 3
 public:
     PlayerType3(int newPosition, string newName, Game &newGame);
-    PlayerType3(const Player &other);
+    PlayerType3(Player &other);
     void playTurn();
 
 private:
@@ -55,7 +55,7 @@ private:
 class PlayerType4 : public Player {  //For strategy 4
 public:
     PlayerType4(int newPosition, string newName, Game &newGame);
-    PlayerType4(const Player &other);
+    PlayerType4(Player &other);
     void playTurn();
 
 private:

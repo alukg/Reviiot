@@ -10,8 +10,17 @@ PlayerType2::PlayerType2(int newPosition, string newName, Game &newGame) : Playe
 
 }
 
-PlayerType2::PlayerType2(const Player &other) : Player(other.getPosition(), other.getName(), 1, other.getGame()) {
-
+PlayerType2::PlayerType2(Player &other) : Player(other.getPosition(), other.getName(), 1, other.getGame()) {
+    for (list<Card *>::iterator it = other.getCards().begin(); it != other.getCards().end(); it++) {
+        switch ((*it)->getType()) {
+            case Num:
+                this->addCard(new NumericCard(**it));
+                break;
+            case Fig:
+                this->addCard(new FigureCard(**it));
+                break;
+        }
+    }
 }
 
 void PlayerType2::playTurn() {
@@ -23,11 +32,11 @@ void PlayerType2::playTurn() {
 
     for (list<Card *>::iterator it = getCards().begin(); it != getCards().end(); it++) {
         Card *tmp = *it;
-        cardValue = tmp->toString().substr(0, tmp->toString().length()-1);
-        if(presentCard == "")
+        cardValue = tmp->toString().substr(0, tmp->toString().length() - 1);
+        if (presentCard == "")
             presentCard = cardValue;
-        if(cardValue != presentCard){
-            if(counter < minCards){
+        if (cardValue != presentCard) {
+            if (counter < minCards) {
                 chosenCard = presentCard;
                 minCards = counter;
             }
@@ -37,12 +46,12 @@ void PlayerType2::playTurn() {
         counter++;
     }
 
-    if(presentCard != chosenCard)
-        if(counter < minCards)
+    if (presentCard != chosenCard)
+        if (counter < minCards)
             chosenCard = presentCard;
 
-    Player* chosenPlayer = game.getPlayerWithMostCards(*this);
-    askForCard(chosenCard,chosenPlayer);
-    cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard<< endl;
+    Player *chosenPlayer = game.getPlayerWithMostCards(*this);
+    askForCard(chosenCard, chosenPlayer);
+    cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard << endl;
     cout << endl;
 }
