@@ -92,4 +92,10 @@ list<Card *>& Hand::getCards() {
     return this->cards;
 }
 
-Hand::~Hand() {};
+Hand::~Hand() {
+    if(cards.size()>0) {
+        for (list<Card *>::iterator it = cards.begin(); it != cards.end(); it++) {
+            delete *it;
+        }
+    }
+};

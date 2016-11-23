@@ -78,7 +78,7 @@ void Player::isFour() {
 
     for (list<Card *>::iterator it = getCards().begin(); it != getCards().end();) {
         if (counts[(*it)->getCardValue()] == 4) {
-            //delete(**it);
+            delete(*it);
             it = getCards().erase(it);
         }
         else {

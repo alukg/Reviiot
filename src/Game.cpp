@@ -161,7 +161,7 @@ void Game::printState() {
     cout << "Deck:" + deck.toString() << endl;
     for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
         cout << (*it)->getName() + ' ' + (Hand(**it)).toString()<< endl;
-        
+
     }
 }
 
@@ -215,4 +215,8 @@ int Game::getHighestNumValue() {
 int Game::highestNumValue;
 
 
-Game::~Game() {};
+Game::~Game() {
+    for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
+        delete(*it);
+    }
+};
