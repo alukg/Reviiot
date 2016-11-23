@@ -177,6 +177,7 @@ bool Game::isFinished() const {
 
 void Game::play() {
     while (!isFinished()) {
+        cout<< "Turn " + to_string(numberOfTurns +1)<< endl;
         printState();
         players[numberOfTurns % players.size()]->playTurn();
         numberOfTurns++;

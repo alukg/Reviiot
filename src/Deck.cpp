@@ -13,10 +13,10 @@ Deck::Deck(Deck &other) {
     for (deque<Card *>::iterator it = other.Q.begin(); it != other.Q.end(); ++it) {
         if ((*it)->getType() == Num) {
             NumericCard *card = new NumericCard(static_cast<NumericCard&>(**it));
-            Q.push_front(card);
+            Q.push_back(card);
         } else {
             FigureCard *card = new FigureCard(static_cast<FigureCard&>(**it));
-            Q.push_front(card);
+            Q.push_back(card);
         }
     }
 }
@@ -62,11 +62,12 @@ void Deck::addCard(string cardName) {
 
 
     if (isFigure){
-        FigureCard *card = new FigureCard(figure,shape);Q.push_front(card);
+        FigureCard *card = new FigureCard(figure,shape);
+        Q.push_back(card);
     }
     else{
         NumericCard *card = new NumericCard(numValue,shape);
-        Q.push_front(card);
+        Q.push_back(card);
     }
 
 

@@ -13,7 +13,6 @@ int main(int argc, char **argv) {
 
     game.init();
     Game initializedGame = game;
-    game.printState();
     game.play();
 
     cout << std::endl;

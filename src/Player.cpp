@@ -39,8 +39,9 @@ list<Card *> *Player::checkForCard(string cardRequested) {
             it++;
         }
     }
-    if(game.getGameDeck().getNumberOfCards() > 0){
-        for (int i = 0; i < countCardsToTake; i++) {
+
+    for (int i = 0; i < countCardsToTake; i++) {
+        if(game.getGameDeck().getNumberOfCards() > 0){
             addCard(*(game.getGameDeck().fetchCard()));
         }
     }
