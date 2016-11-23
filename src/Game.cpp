@@ -1,6 +1,9 @@
-#include <Game.h>
+#include "../include/Game.h"
 #include <sstream>
 #include <algorithm>
+#include <fstream>
+#include <fcntl.h>
+#include <zconf.h>
 
 Game::Game(Game &other) :
         deck(other.deck), verbalOn(other.verbalOn) {
@@ -24,8 +27,14 @@ Game::Game(Game &other) :
 }
 
 Game::Game(char *configurationFile) : numberOfTurns(0) {
-    istringstream f(configurationFile);
+
+    ifstream readConfig(string() + "input/" + configurationFile);
     string line;
+    std::string content( (std::istreambuf_iterator<char>(readConfig) ),
+                         (std::istreambuf_iterator<char>()    ) );
+
+    readConfig.close();
+    istringstream f(content);
 
     int counter = 1;
     while (getline(f, line) && counter != 5) {
@@ -53,7 +62,7 @@ Game::Game(char *configurationFile) : numberOfTurns(0) {
     }
 }
 
-Game::Game(Game &&other) noexcept : /* noexcept needed to enable optimizations in containers */
+Game::Game(Game &&other) :
         deck(other.deck), verbalOn(other.verbalOn) {
 
     for (vector<Player *>::const_iterator it = other.players.begin(); it != other.players.end(); it++) {
@@ -134,7 +143,7 @@ void Game::init() {
 
 void Game::giveCards(Player &player) {
     for (int i = 1; i <= 7; i++) {
-        player.addCard(deck.fetchCard());
+        player.addCard(*(deck.fetchCard()));
     }
 }
 
@@ -174,7 +183,6 @@ void Game::play() {
         numberOfTurns++;
 
     }
-    printWinner();
 }
 
 
@@ -191,11 +199,12 @@ void Game::printWinner() {
             }
             numOfWinners++;
         }
-        if (numOfWinners > 1) {
-            cout << "***** The winners are:" + winnerLine + " ***" << endl;
-        } else
-            cout << "***** The Winner is:" + winnerLine + " *****" << endl;
     }
+    if (numOfWinners > 1) {
+        cout << "***** The winners are:" + winnerLine + " *****" << endl;
+    } else
+        cout << "***** The Winner is:" + winnerLine + " *****" << endl;
+
 }
 
 int Game::getHighestNumValue() {
@@ -203,3 +212,6 @@ int Game::getHighestNumValue() {
 }
 
 int Game::highestNumValue;
+
+
+Game::~Game() {};

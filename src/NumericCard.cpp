@@ -12,9 +12,9 @@ NumericCard::NumericCard(int num, Shape shape) : Card(shape, Num), number(num){
 
 };
 
-NumericCard::NumericCard(NumericCard &other) : Card(other.shape, other.type){
-    number = atoi(other.getCardValue());
-}
+NumericCard::NumericCard(Card &other) : Card(other) {
+    number = stoi(other.getCardValue());
+};
 
 string NumericCard::toString() const {
     std::string s = to_string(this->number);
@@ -25,3 +25,5 @@ string NumericCard::getCardValue() const {
     return to_string(this->number);
 
 }
+
+NumericCard::~NumericCard() {};

@@ -95,3 +95,5 @@ string Deck::toString() {
     }
     return s;
 }
+
+Deck::~Deck() {}

@@ -1,6 +1,6 @@
 
-#include "Player.h"
-#include "Game.h"
+#include "../include/Player.h"
+#include "../include/Game.h"
 #include <map>
 
 /* Default constructor */
@@ -41,7 +41,7 @@ list<Card *> *Player::checkForCard(string cardRequested) {
     }
     if(game.getGameDeck().getNumberOfCards() > 0){
         for (int i = 0; i < countCardsToTake; i++) {
-            addCard(game.getGameDeck().fetchCard());
+            addCard(*(game.getGameDeck().fetchCard()));
         }
     }
     isFour();
@@ -56,12 +56,12 @@ void Player::askForCard(string card, Player *player) {
     std::list<Card *> *cardsFromPlayer = player->checkForCard(card);
     if (cardsFromPlayer == nullptr) {
         if(game.getGameDeck().getNumberOfCards() > 0) {
-            addCard(game.getGameDeck().fetchCard());
+            addCard(*(game.getGameDeck().fetchCard()));
         }
     } else {
         for (list<Card *>::iterator it = cardsFromPlayer->begin(); it != cardsFromPlayer->end(); it++) {
             Card *tmp = *it;
-            this->addCard(tmp);
+            this->addCard(*tmp);
         }
     }
     isFour();
@@ -77,11 +77,14 @@ void Player::isFour() {
     }
 
     for (list<Card *>::iterator it = getCards().begin(); it != getCards().end();) {
-        if (counts[(*it)->getCardValue()] == 4)
+        if (counts[(*it)->getCardValue()] == 4) {
+            //delete(**it);
             it = getCards().erase(it);
-            //delete Card from game
+        }
         else {
             it++;
         }
     }
 }
+
+Player::~Player() {};

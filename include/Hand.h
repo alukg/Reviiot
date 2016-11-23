@@ -16,12 +16,12 @@ private:
     int figureToInt(char fig);
 
 public:
-	void addCard(Card *card);
+	void addCard(Card &card);
 	bool removeCard(Card &card);
 	list<Card *>& getCards();
 	int getNumberOfCards() const; // Get the number of cards in hand
 	string toString(); // Return a list of the cards, separated by space, in one line, in a sorted order, ex: "2S 5D 10H"
-
+	virtual ~Hand();
 };
 
 #endif

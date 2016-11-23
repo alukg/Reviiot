@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "../../include/Player.h"
 #include "../../include/Game.h"
 
 #include <iostream>
@@ -14,10 +14,10 @@ PlayerType1::PlayerType1(Player &other) : Player(other.getPosition(), other.getN
     for (list<Card *>::iterator it = other.getCards().begin(); it != other.getCards().end(); it++) {
         switch ((*it)->getType()) {
             case Num:
-                this->addCard(new NumericCard(**it));
+                this->addCard(*(new NumericCard(**it)));
                 break;
             case Fig:
-                this->addCard(new FigureCard(**it));
+                this->addCard(*(new FigureCard(**it)));
                 break;
         }
     }
@@ -53,3 +53,5 @@ void PlayerType1::playTurn() {
     cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard<< endl;
     cout << endl;
 }
+
+PlayerType1::~PlayerType1() {};

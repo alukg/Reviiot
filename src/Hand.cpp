@@ -1,8 +1,7 @@
 
 #include "../include/Hand.h"
 #include <map>
-#include <Game.h>
-
+#include "../include/Game.h"
 
 int Hand::figureToInt(char fig) {
     //need to change with N (highest numeric card value)
@@ -20,20 +19,20 @@ int Hand::figureToInt(char fig) {
     }
 }
 
-void Hand::addCard(Card *card) {
+void Hand::addCard(Card &card) {
     bool found = false;
     if(getNumberOfCards()==0)
-        cards.push_front(card);
+        cards.push_front(&card);
     else {
         for (list<Card *>::iterator it = this->cards.begin(); it != this->cards.end() && !found; it++) {
             Card *tmp = *it;
-            if (compare(*card, *tmp)) {
-                cards.insert(it, card);
+            if (compare(card, *tmp)) {
+                cards.insert(it, &card);
                 found=true;
             }
         }
         if(!found){
-            cards.push_back(card);
+            cards.push_back(&card);
         }
 
     }
@@ -92,3 +91,5 @@ bool Hand::removeCard(Card &card) {
 list<Card *>& Hand::getCards() {
     return this->cards;
 }
+
+Hand::~Hand() {};
