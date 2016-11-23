@@ -87,7 +87,11 @@ void Player::isFour() {
     }
 }
 string Player::toString(){
-    return getName() + ": " + Hand(*this).toString();
+    string ans = getName() + ": ";
+    for (list<Card *>::iterator it = getCards().begin(); it != getCards().end(); it++){
+        ans = ans + (*it)->toString() + " ";
+    }
+    return ans;
 }
 
 Player::~Player() {};

@@ -48,8 +48,8 @@ public:
     FigureCard(Figure figure1, Shape shape1);
     FigureCard(Card &other);
     Figure getFigure() const;
-    virtual string toString() const;
-    virtual string getCardValue() const;
+    string toString() const;
+    string getCardValue() const;
     virtual ~FigureCard();
 };
 
@@ -59,8 +59,8 @@ private:
 public:
     NumericCard(int num, Shape shape);
     NumericCard(Card &other);
-    virtual string getCardValue() const;
-    virtual string toString() const;
+    string getCardValue() const;
+    string toString() const;
     virtual ~NumericCard();
 };
 

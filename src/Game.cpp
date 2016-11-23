@@ -2,8 +2,7 @@
 #include <sstream>
 #include <algorithm>
 #include <fstream>
-#include <fcntl.h>
-#include <zconf.h>
+
 
 Game::Game(Game &other) :
         deck(other.deck), verbalOn(other.verbalOn) {
@@ -28,7 +27,7 @@ Game::Game(Game &other) :
 
 Game::Game(char *configurationFile) : numberOfTurns(0) {
 
-    ifstream readConfig(string() + "input/" + configurationFile);
+    ifstream readConfig(string() + configurationFile);
     string line;
     std::string content( (std::istreambuf_iterator<char>(readConfig) ),
                          (std::istreambuf_iterator<char>()    ) );
@@ -160,8 +159,7 @@ Deck &Game::getGameDeck() {
 void Game::printState() {
     cout << "Deck:" + deck.toString() << endl;
     for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
-        cout << (*it)->getName() + ' ' + (Hand(**it)).toString()<< endl;
-
+        cout << (*it)->toString() << endl;
     }
 }
 
