@@ -26,6 +26,7 @@ public:
     int getType() const;
     Game& getGame() const;
     virtual void playTurn() = 0; //remember to check this again
+    string toString();
     virtual ~Player();
 };
 

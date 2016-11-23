@@ -86,5 +86,8 @@ void Player::isFour() {
         }
     }
 }
+string Player::toString(){
+    return getName() + ": " + Hand(*this).toString();
+}
 
 Player::~Player() {};

@@ -160,7 +160,8 @@ Deck &Game::getGameDeck() {
 void Game::printState() {
     cout << "Deck:" + deck.toString() << endl;
     for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
-        cout << (*it)->getName() + ' ' + (*it)->toString() << endl;
+        cout << (*it)->getName() + ' ' + (Hand(**it)).toString()<< endl;
+        
     }
 }
 
