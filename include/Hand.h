@@ -16,6 +16,7 @@ private:
     int figureToInt(char fig);
 
 public:
+	Hand();
 	void addCard(Card &card);
 	bool removeCard(Card &card);
 	list<Card *>& getCards();

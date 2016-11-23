@@ -4,9 +4,7 @@
 
 using namespace std;
 
-Card::Card(Shape shape1, Type type1) {
-    shape = shape1;
-    type = type1;
+Card::Card(Shape shape1, Type type1) :shape(shape1), type(type1) {
 };
 
 Card::Card(Card &other): shape(other.shape), type(other.type){

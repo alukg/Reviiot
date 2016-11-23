@@ -5,7 +5,7 @@
 
 
 Game::Game(Game &other) :
-        deck(other.deck), verbalOn(other.verbalOn) {
+        deck(other.deck), verbalOn(other.verbalOn), players() {
 
     for (vector<Player *>::const_iterator it = other.players.begin(); it != other.players.end(); it++) {
         switch ((*it)->getType()) {
@@ -25,7 +25,7 @@ Game::Game(Game &other) :
     }
 }
 
-Game::Game(char *configurationFile) : numberOfTurns(0) {
+Game::Game(char *configurationFile) :players(),verbalOn(),deck() {
 
     ifstream readConfig(string() + configurationFile);
     string line;
@@ -39,7 +39,10 @@ Game::Game(char *configurationFile) : numberOfTurns(0) {
     while (getline(f, line) && counter != 5) {
         if (!line.empty() && line.at(0) != '#') {
             if (counter == 1) {
-                verbalOn = stoi(line);
+                if(stoi(line)==1)
+                    verbalOn=true;
+                else
+                    verbalOn=false;
             } else if (counter == 2) {
                 highestNumValue = stoi(line);
             } else if (counter == 3) {
@@ -62,7 +65,7 @@ Game::Game(char *configurationFile) : numberOfTurns(0) {
 }
 
 Game::Game(Game &&other) :
-        deck(other.deck), verbalOn(other.verbalOn) {
+        deck(other.deck), verbalOn(other.verbalOn), players(){
 
     for (vector<Player *>::const_iterator it = other.players.begin(); it != other.players.end(); it++) {
         switch ((*it)->getType()) {

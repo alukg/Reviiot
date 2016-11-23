@@ -3,6 +3,8 @@
 #include <map>
 #include "../include/Game.h"
 
+Hand::Hand() : cards() {};
+
 int Hand::figureToInt(char fig) {
     //need to change with N (highest numeric card value)
     switch (fig) {
@@ -57,7 +59,8 @@ bool Hand::compare( Card &left1, Card &right1) {
         if(left==right){
             if(left1.getShape() < right1.getShape()){
                 return true;
-            }
+            } else
+                return false;
         }
         else
             return false;

@@ -5,11 +5,11 @@
 using namespace std;
 
 
-Deck::Deck() {
+Deck::Deck() : Q() {
 
-}
+};
 
-Deck::Deck(Deck &other) {
+Deck::Deck(Deck &other): Q() {
     for (deque<Card *>::iterator it = other.Q.begin(); it != other.Q.end(); ++it) {
         if ((*it)->getType() == Num) {
             NumericCard *card = new NumericCard(static_cast<NumericCard&>(**it));
@@ -74,13 +74,9 @@ void Deck::addCard(string cardName) {
 };
 
 Card* Deck::fetchCard() {
-    if(Q.size()>0) {
-        Card *c = Q.front();
-        Q.pop_front();
-        return c;
-    } else {
-        //throw exception or null or something else
-    }
+    Card *c = Q.front();
+    Q.pop_front();
+    return c;
 };
 
 int Deck::getNumberOfCards() {

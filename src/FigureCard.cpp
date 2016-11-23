@@ -9,12 +9,12 @@ using namespace std;
 
 //Constructor
 
-FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1, Fig) {
-    this->figure=figure1;
+FigureCard::FigureCard(Figure figure1, Shape shape1) : Card(shape1, Fig), figure(figure1) {
+
 };
 
-FigureCard::FigureCard(Card &other) : Card(other) {
-    figure = other.getFigure();
+FigureCard::FigureCard(Card &other) : Card(other), figure(other.getFigure()) {
+    
 }
 
 string FigureCard::toString() const{

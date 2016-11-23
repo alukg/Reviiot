@@ -4,7 +4,7 @@
 #include <map>
 
 /* Default constructor */
-Player::Player(int newPosition, string newName, int newType, Game &newGame) :
+Player::Player(int newPosition, string newName, int newType, Game &newGame) :Hand(),
         position(newPosition), name(newName), type(newType), game(newGame) {}
 
 string Player::getName() const {

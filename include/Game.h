@@ -13,7 +13,7 @@ class Game {
 private:
     vector<Player *> players;  //The list of the players
     static int highestNumValue;
-    int numberOfTurns;
+    int numberOfTurns=0;
 	bool verbalOn;
     Deck deck;                 //The deck of the game
 	void insertCardsToDeck(Deck &deck, string line);
