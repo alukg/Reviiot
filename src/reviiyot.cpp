@@ -40,6 +40,7 @@ int main(int argc, char **argv) {
     cout<<"----------"<<endl;
     cout<<"Final State:"<<endl;
     game.printState();
+
     return 0;
 }
 

@@ -1,7 +1,7 @@
 
-
 #include "../include/Card.h"
 #include <iostream>
+
 using namespace std;
 
 Card::Card(Shape shape1, Type type1) {
@@ -34,8 +34,3 @@ Type Card::getType(){
 Figure Card::getFigure() const{
     return Ace;
 };
-
-Card::~Card() {
-    
-};
-

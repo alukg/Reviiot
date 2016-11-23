@@ -1,6 +1,6 @@
 
-#include "Player.h"
-#include "Game.h"
+#include "../include/Player.h"
+#include "../include/Game.h"
 #include <map>
 
 /* Default constructor */

@@ -26,7 +26,7 @@ public:
     static int getHighestNumValue();
 	Game( char* configurationFile );
 	Game( Game &other );
-	Game( Game&& other ) noexcept;
+	Game( Game&& other );
 	void init();
 	void play();
 	void printState();        //Print the state of the game as described in the assignment.

@@ -1,8 +1,7 @@
 
 #include "../include/Hand.h"
 #include <map>
-#include <Game.h>
-
+#include "../include/Game.h"
 
 int Hand::figureToInt(char fig) {
     //need to change with N (highest numeric card value)

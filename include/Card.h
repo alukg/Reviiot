@@ -36,7 +36,6 @@ public:
     virtual Figure getFigure() const;
     virtual string getCardValue() const =0;
     virtual string toString() const = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
-    virtual ~Card();
 };
 
 class FigureCard : public Card {

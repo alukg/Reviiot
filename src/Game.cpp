@@ -1,4 +1,4 @@
-#include <Game.h>
+#include "../include/Game.h"
 #include <sstream>
 #include <algorithm>
 
@@ -53,7 +53,7 @@ Game::Game(char *configurationFile) : numberOfTurns(0) {
     }
 }
 
-Game::Game(Game &&other) noexcept : /* noexcept needed to enable optimizations in containers */
+Game::Game(Game &&other) :
         deck(other.deck), verbalOn(other.verbalOn) {
 
     for (vector<Player *>::const_iterator it = other.players.begin(); it != other.players.end(); it++) {
