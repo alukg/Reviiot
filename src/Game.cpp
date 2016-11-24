@@ -5,7 +5,7 @@
 
 
 Game::Game(Game &other) :
-        deck(other.deck), verbalOn(other.verbalOn), players() {
+        players(), verbalOn(other.verbalOn), deck(other.deck) {
 
     for (vector<Player *>::const_iterator it = other.players.begin(); it != other.players.end(); it++) {
         switch ((*it)->getType()) {
@@ -68,7 +68,7 @@ Game::Game(char *configurationFile) : players(), verbalOn(), deck() {
 }
 
 Game::Game(Game &&other) :
-        deck(other.deck), verbalOn(other.verbalOn), players() {
+        players(), verbalOn(other.verbalOn), deck(other.deck) {
 
     for (vector<Player *>::const_iterator it = other.players.begin(); it != other.players.end(); it++) {
         switch ((*it)->getType()) {

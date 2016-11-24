@@ -10,8 +10,8 @@ NumericCard::NumericCard(int num, Shape shape) : Card(shape, Num), number(num){
 
 };
 
-NumericCard::NumericCard(Card &other) : Card(other) {
-    number = stoi(other.getCardValue());
+NumericCard::NumericCard(Card &other) : Card(other), number(stoi(other.getCardValue())) {
+
 };
 
 string NumericCard::toString() const {

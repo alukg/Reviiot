@@ -9,8 +9,8 @@ using namespace std;
 
 class Player : public Hand {
 private:
-    const string name;
     const int position;
+    const string name;
     int type;
 
 protected:
