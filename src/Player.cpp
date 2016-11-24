@@ -7,7 +7,7 @@
 Player::Player(int newPosition, string newName, int newType, Game &newGame) :Hand(),
         position(newPosition), name(newName), type(newType), game(newGame) {}
 
-string Player::getName() const {
+string Player::getName(){
     return name;
 }
 
@@ -40,15 +40,18 @@ list<Card *> *Player::checkForCard(string cardRequested) {
         }
     }
 
-    for (int i = 0; i < countCardsToTake; i++) {
-        if(game.getGameDeck().getNumberOfCards() > 0){
-            addCard(*(game.getGameDeck().fetchCard()));
+    if(getNumberOfCards()!=0) {
+        for (int i = 0; i < countCardsToTake; i++) {
+            if (game.getGameDeck().getNumberOfCards() > 0) {
+                addCard(*(game.getGameDeck().fetchCard()));
+            }
         }
     }
     isFour();
     if (returnedCards->size() != 0)
         return returnedCards;
     else
+        delete returnedCards;
         return nullptr;
 }
 
@@ -56,15 +59,21 @@ list<Card *> *Player::checkForCard(string cardRequested) {
 void Player::askForCard(string card, Player *player) {
     std::list<Card *> *cardsFromPlayer = player->checkForCard(card);
     if (cardsFromPlayer == nullptr) {
-        if(game.getGameDeck().getNumberOfCards() > 0) {
-            addCard(*(game.getGameDeck().fetchCard()));
+        if(getNumberOfCards()!=0) {
+            if (game.getGameDeck().getNumberOfCards() > 0) {
+                addCard(*(game.getGameDeck().fetchCard()));
+            }
         }
     } else {
         for (list<Card *>::iterator it = cardsFromPlayer->begin(); it != cardsFromPlayer->end(); it++) {
             Card *tmp = *it;
             this->addCard(*tmp);
+            *it = nullptr;
         }
     }
+
+    delete cardsFromPlayer;
+    cardsFromPlayer =nullptr;
     isFour();
 }
 

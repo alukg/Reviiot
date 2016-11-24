@@ -25,6 +25,7 @@ private:
 public:
     static int getHighestNumValue();
 	Game( char* configurationFile );
+	bool getVerbalOn() const;
 	Game( Game &other );
 	Game( Game&& other );
 	void init();

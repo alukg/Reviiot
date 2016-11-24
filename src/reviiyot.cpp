@@ -1,16 +1,13 @@
 #include <iostream>
 
-
-#include "../include/Game.h"
+#include <Game.h>
 
 using namespace std;
 
 int main(int argc, char **argv) {
-//
+    char* configurationFile = argv[1];
 
-	char* configurationFile = argv[1];
-	Game game = Game(configurationFile);
-
+    Game game = Game(configurationFile);
     game.init();
     Game initializedGame = game;
     game.play();
@@ -24,7 +21,5 @@ int main(int argc, char **argv) {
     cout<<"----------"<<endl;
     cout<<"Final State:"<<endl;
     game.printState();
-
     return 0;
 }
-

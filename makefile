@@ -1,7 +1,7 @@
-all: run
+all: reviiot
 
-run: bin/reviiyot.o bin/Card.o bin/Deck.o bin/FigureCard.o bin/Game.o bin/Hand.o bin/NumericCard.o bin/Player.o bin/PlayerType1.o bin/PlayerType2.o bin/PlayerType3.o bin/PlayerType4.o
-	g++ -o bin/run bin/reviiyot.o bin/Card.o bin/Deck.o bin/FigureCard.o bin/Game.o bin/Hand.o bin/NumericCard.o bin/Player.o bin/PlayerType1.o bin/PlayerType2.o bin/PlayerType3.o bin/PlayerType4.o
+reviiot: bin/reviiyot.o bin/Card.o bin/Deck.o bin/FigureCard.o bin/Game.o bin/Hand.o bin/NumericCard.o bin/Player.o bin/PlayerType1.o bin/PlayerType2.o bin/PlayerType3.o bin/PlayerType4.o
+	g++ -o bin/reviiot bin/reviiyot.o bin/Card.o bin/Deck.o bin/FigureCard.o bin/Game.o bin/Hand.o bin/NumericCard.o bin/Player.o bin/PlayerType1.o bin/PlayerType2.o bin/PlayerType3.o bin/PlayerType4.o
 
 bin/reviiyot.o: src/reviiyot.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/reviiyot.o src/reviiyot.cpp

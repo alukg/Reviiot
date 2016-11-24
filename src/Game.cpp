@@ -25,24 +25,27 @@ Game::Game(Game &other) :
     }
 }
 
-Game::Game(char *configurationFile) :players(),verbalOn(),deck() {
+Game::Game(char *configurationFile) : players(), verbalOn(), deck() {
 
+    string line, content;
     ifstream readConfig(string() + configurationFile);
-    string line;
-    std::string content( (std::istreambuf_iterator<char>(readConfig) ),
-                         (std::istreambuf_iterator<char>()    ) );
-
+    content.append((std::istreambuf_iterator<char>(readConfig)),
+                   (std::istreambuf_iterator<char>()));
+    if (!readConfig.is_open()) {
+        cout << "Can't access config file" << endl;
+        cout << "Exisitng program" << endl;
+        exit(1);
+    }
     readConfig.close();
     istringstream f(content);
-
     int counter = 1;
     while (getline(f, line) && counter != 5) {
         if (!line.empty() && line.at(0) != '#') {
             if (counter == 1) {
-                if(stoi(line)==1)
-                    verbalOn=true;
+                if (stoi(line) == 1)
+                    verbalOn = true;
                 else
-                    verbalOn=false;
+                    verbalOn = false;
             } else if (counter == 2) {
                 highestNumValue = stoi(line);
             } else if (counter == 3) {
@@ -65,7 +68,7 @@ Game::Game(char *configurationFile) :players(),verbalOn(),deck() {
 }
 
 Game::Game(Game &&other) :
-        deck(other.deck), verbalOn(other.verbalOn), players(){
+        deck(other.deck), verbalOn(other.verbalOn), players() {
 
     for (vector<Player *>::const_iterator it = other.players.begin(); it != other.players.end(); it++) {
         switch ((*it)->getType()) {
@@ -164,10 +167,11 @@ void Game::printState() {
     for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
         cout << (*it)->toString() << endl;
     }
+
 }
 
 void Game::printNumberOfTurns() {
-    cout << numberOfTurns << endl;
+    cout << "Number of Turns: " + to_string(numberOfTurns) << endl;
 }
 
 bool Game::isFinished() const {
@@ -180,8 +184,10 @@ bool Game::isFinished() const {
 
 void Game::play() {
     while (!isFinished()) {
-        cout<< "Turn " + to_string(numberOfTurns +1)<< endl;
-        printState();
+        if (getVerbalOn()) {
+            cout << "Turn " + to_string(numberOfTurns + 1) << endl;
+            printState();
+        }
         players[numberOfTurns % players.size()]->playTurn();
         numberOfTurns++;
 
@@ -203,6 +209,9 @@ void Game::printWinner() {
             numOfWinners++;
         }
     }
+    if (getVerbalOn()) {
+        cout << "----------" << endl;
+    }
     if (numOfWinners > 1) {
         cout << "***** The winners are:" + winnerLine + " *****" << endl;
     } else
@@ -219,6 +228,10 @@ int Game::highestNumValue;
 
 Game::~Game() {
     for (vector<Player *>::iterator it = players.begin(); it != players.end(); it++) {
-        delete(*it);
+        delete (*it);
     }
 };
+
+bool Game::getVerbalOn() const {
+    return verbalOn;
+}

@@ -21,7 +21,7 @@ protected:
 
 public:
     Player(int newPosition, string newName, int type, Game &newGame);
-    string getName() const;
+    string getName();
     int getPosition() const ;
     int getType() const;
     Game& getGame() const;
