@@ -57,10 +57,7 @@ bool Hand::compare( Card &left1, Card &right1) {
         return true;
     else
         if(left==right){
-            if(left1.getShape() < right1.getShape()){
-                return true;
-            } else
-                return false;
+            return left1.getShape() < right1.getShape();
         }
         else
             return false;

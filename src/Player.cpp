@@ -65,6 +65,7 @@ void Player::askForCard(string card, Player *player) {
             this->addCard(*tmp);
         }
     }
+    delete cardsFromPlayer;
     isFour();
 }
 
