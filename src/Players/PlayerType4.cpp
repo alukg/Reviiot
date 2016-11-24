@@ -32,8 +32,10 @@ void PlayerType4::playTurn() {
     Player *chosenPlayer = game.getPlayers()[nextPlayer % game.getPlayers().size()];
     nextPlayer++;
     askForCard(chosenCard, chosenPlayer);
-    cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard << endl;
-    cout << endl;
+    if(game.getVerbalOn()) {
+        cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard << endl;
+        cout << endl;
+    }
 }
 
 PlayerType4::~PlayerType4() {};

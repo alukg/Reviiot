@@ -48,7 +48,7 @@ public:
     FigureCard(Figure figure1, Shape shape1);
     FigureCard(Card &other);
     Figure getFigure() const;
-    string toString() const;
+    string toString() const override;
     string getCardValue() const;
     virtual ~FigureCard();
 };
@@ -60,7 +60,7 @@ public:
     NumericCard(int num, Shape shape);
     NumericCard(Card &other);
     string getCardValue() const;
-    string toString() const;
+    string toString() const override;
     virtual ~NumericCard();
 };
 

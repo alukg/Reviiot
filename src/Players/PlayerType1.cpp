@@ -50,8 +50,10 @@ void PlayerType1::playTurn() {
 
     Player* chosenPlayer = game.getPlayerWithMostCards(*this);
     askForCard(chosenCard,chosenPlayer);
-    cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard<< endl;
-    cout << endl;
+    if(game.getVerbalOn()) {
+        cout << getName() + " asked " + chosenPlayer->getName() + " for the value " + chosenCard << endl;
+        cout << endl;
+    }
 }
 
 PlayerType1::~PlayerType1() {};

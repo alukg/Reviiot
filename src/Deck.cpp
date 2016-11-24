@@ -91,4 +91,9 @@ string Deck::toString() {
 }
 
 Deck::~Deck() {
+    if(Q.size()>0) {
+        for (deque<Card *>::iterator it = Q.begin(); it != Q.end(); it++) {
+            delete(*it);
+        }
+    }
 }
