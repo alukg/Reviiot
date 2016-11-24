@@ -36,10 +36,8 @@ void Hand::addCard(Card &card) {
         if(!found){
             cards.push_back(&card);
         }
-
     }
 }
-
 
 bool Hand::compare( Card &left1, Card &right1) {
 
@@ -75,15 +73,7 @@ string Hand::toString() {
     return ans;
 }
 
-//need to be checked
 bool Hand::removeCard(Card &card) {
-//    bool found = false;
-//    for (list<Card *>::iterator it = cards.begin(); it != cards.end() && !found; it++){
-//        if(*it == &card){
-//            found = true;
-//            cards.erase(it);
-//        }
-//    }
     cards.remove(&card);
     return true;
 }

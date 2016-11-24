@@ -12,7 +12,6 @@ private:
     const string name;
     const int position;
     int type;
-    void isFour();
 
 protected:
     void askForCard(string card, Player* player);
@@ -26,6 +25,7 @@ public:
     int getType() const;
     Game& getGame() const;
     virtual void playTurn() = 0; //remember to check this again
+    void isFour();
     string toString();
     virtual ~Player();
 };

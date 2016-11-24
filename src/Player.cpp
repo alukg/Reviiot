@@ -77,7 +77,6 @@ void Player::askForCard(string card, Player *player) {
     isFour();
 }
 
-//need to be Checked
 void Player::isFour() {
 
     typedef map<string, int> myMap;
@@ -96,6 +95,7 @@ void Player::isFour() {
         }
     }
 }
+
 string Player::toString(){
     string ans = getName() + ": ";
     for (list<Card *>::iterator it = getCards().begin(); it != getCards().end(); it++){

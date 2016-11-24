@@ -95,7 +95,7 @@ void Game::insertCardsToDeck(Deck &deck, string deckCards) {
     while (abs(length - iterator) > 1) {
         if (deckCards.at(iterator) != ' ') {
             subIterator = iterator;
-            while (abs(length - subIterator) > 1 && deckCards.at(subIterator) != ' ') {
+            while (abs(length - subIterator) >= 1 && deckCards.at(subIterator) != ' ') {
                 subIterator++;
             }
             deck.addCard(deckCards.substr(iterator, subIterator - iterator));
@@ -143,6 +143,7 @@ Player *Game::getPlayerWithMostCards(Player &me) {
 void Game::init() {
     for (Player *player : players) {
         giveCards(*player);
+        player->isFour();
     }
 }
 
@@ -193,7 +194,6 @@ void Game::play() {
 
     }
 }
-
 
 void Game::printWinner() {
 
