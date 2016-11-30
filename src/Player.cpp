@@ -78,7 +78,6 @@ void Player::askForCard(string card, Player *player) {
 }
 
 void Player::isFour() {
-
     typedef map<string, int> myMap;
     myMap counts;
     for (list<Card *>::const_iterator it = getCards().begin(); it != getCards().end(); it++) {

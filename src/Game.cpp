@@ -40,7 +40,7 @@ Game::Game(char *configurationFile) : players(), verbalOn(), deck() {
     istringstream f(content);
     int counter = 1;
     while (getline(f, line) && counter != 5) {
-        if (!line.empty() && line.at(0) != '#') {
+        if (!line.empty() && line.at(0) != '#' && line.at(0) != ' ') {
             if (counter == 1) {
                 if (stoi(line) == 1)
                     verbalOn = true;
@@ -53,7 +53,7 @@ Game::Game(char *configurationFile) : players(), verbalOn(), deck() {
             } else if (counter == 4) {
                 int playerCounter = 1;
                 do {
-                    if (!line.empty() && line.at(0) != ' ') {
+                    if (!line.empty() && line.at(0) != ' ' && line.at(0) != '#') {
                         string delimiter = " ";
                         string playerName = line.substr(0, line.find(delimiter));
                         int playerStrategy = stoi(line.substr(line.find(delimiter) + 1, 1));
